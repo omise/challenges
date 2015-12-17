@@ -1,9 +1,8 @@
 require 'test_helper'
 
-class WebsiteControllerTest < ActionController::TestCase
+class WebsiteTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get :index
+    get "/"
     assert_response :success
   end
-
 end
