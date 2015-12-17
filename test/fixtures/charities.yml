@@ -1,4 +1,24 @@
-temple:
-  name: Temple
+children:
+  name: Ban Khru Noi
+  total: 0
+  currency: THB
+
+community:
+  name: Habitat for Humanity Thailand
+  total: 0
+  currency: THB
+
+environment:
+  name: Paper Ranger
+  total: 0
+  currency: THB
+
+culture:
+  name: Makhampom Theater
+  total: 0
+  currency: THB
+
+disabled:
+  name: Thailand Association of the Blind
   total: 0
   currency: THB

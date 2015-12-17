@@ -1,0 +1,14 @@
+<%= form_for [:admin, @charity] do |f| %>
+
+  <h1><%= t(".title") %></h1>
+
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>
