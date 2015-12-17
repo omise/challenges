@@ -50,6 +50,13 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     debug_inspector (0.0.2)
+    devise (3.5.2)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.6.0)
     globalid (0.3.6)
@@ -73,6 +80,7 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
+    orm_adapter (0.5.0)
     pg (0.18.4)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -103,6 +111,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     sass (3.4.19)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -129,6 +139,8 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -142,6 +154,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   coffee-rails (~> 4.1.0)
+  devise
   jbuilder (~> 2.0)
   jquery-rails
   pg (~> 0.15)
