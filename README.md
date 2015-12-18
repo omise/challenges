@@ -1,3 +1,5 @@
+![Tam Boon](https://cdn.omise.co/assets/tamboon.jpg)
+
 # Tam Boon
 
 Tam Boon (which means Making Merit in thai) is a simple rails app that contains
