@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tamboon</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <%= yield %>
+
+    <%= javascript_include_tag "https://cdn.omise.co/omise.js" %>
+
+    <%= javascript_tag do %>
+      Omise.setPublicKey("<%= Omise.vault_key %>");
+    <% end %>
+
+  </body>
+</html>

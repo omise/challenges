@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :charities
   end
 
-  root to: "website#index"
+  post 'donate', to: 'website#donate', as: 'donate'
+
+  root to: 'website#index'
 
 end

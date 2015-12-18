@@ -2,7 +2,7 @@
 
 <ul>
   <% @charities.each do |charity| %>
-    <li><%= charity.name %> (<%= charity.total %>)</li>
+    <li><%= charity.name %> (<%= m charity.total, charity.currency %>)</li>
   <% end %>
 </ul>
 

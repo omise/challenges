@@ -62,4 +62,11 @@ class AppTest < ActiveSupport::TestCase
 
     assert_equal 3, @_app.count_charities
   end
+
+  test "that wen can find a charity by id" do
+    charity = charities(:children)
+    found_charity = @_app.find_charity(charity.id)
+
+    assert_equal charity.id, found_charity.id
+  end
 end

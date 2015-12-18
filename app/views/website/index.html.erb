@@ -1,2 +1,78 @@
-<h1>Website#index</h1>
-<p>Find me in app/views/website/index.html.erb</p>
+<%= form_tag donate_path, id: "donate" do %>
+
+  <p>Pick a charity:</p>
+
+  <ul>
+    <% @app.all_charities.each do |charity| %>
+      <li>
+        <%= radio_button_tag :charity, charity.id %>
+        <%= label_tag "charity_#{charity.id}", charity.name %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div>
+    <%= label_tag :amount %><br>
+    <%= number_field_tag :amount, 500 %> THB
+  </div>
+
+  <% if @token && @token.card.security_code_check %>
+
+    <%= hidden_field_tag :omise_token, @token.id %>
+
+    <div>
+      Number<br>
+      **** **** **** <%= @token.card.last_digits %>
+    </div>
+
+    <div>
+      Name (as on card)<br>
+      <%= @token.card.name %>
+    </div>
+
+    <div>
+      Expires<br>
+      <%= @token.card.expiration_month %> / <%= @token.card.expiration_year %>
+    </div>
+
+    <div>
+      Security Code<br>
+      ***
+    </div>
+
+    <%= link_to t("website.index.use_another_card"), root_path %>
+
+  <% else %>
+
+    <%= hidden_field_tag :omise_token %>
+
+    <div>
+      Number<br>
+      <%= text_field_tag nil, nil, placeholder: "XXXX XXXX XXXX XXXX", data: { omise: "number" } %>
+    </div>
+
+    <div>
+      Name (as on card)<br>
+      <%= text_field_tag nil, nil, placeholder: "J DOE", data: { omise: "holder_name" } %>
+    </div>
+
+    <div>
+      Expires<br>
+      <%= text_field_tag nil, nil, size: 4, placeholder: "XX", data: { omise: "expiration_month" } %>
+      /
+      <%= text_field_tag nil, nil, size: 4, placeholder: "XX", data: { omise: "expiration_year" } %>
+    </div>
+
+    <div>
+      Security Code<br>
+      <%= text_field_tag nil, nil, size: 8, placeholder: "XXX", data: { omise: "security_code" } %>
+    </div>
+
+  <% end %>
+
+  <div>
+    <%= submit_tag t("website.donate.link") %>
+    <span class="cc_error"></span>
+  </div>
+
+<% end %>
