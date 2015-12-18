@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+charities = YAML.load_file(Rails.root.join("test", "fixtures", "charities.yml").to_s)
+
+charities.each do |_,c|
+  Charity.find_or_create_by(name: c["name"])
+end
