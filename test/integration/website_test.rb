@@ -59,4 +59,16 @@ class WebsiteTest < ActionDispatch::IntegrationTest
     assert_template :index
     assert_equal t("website.donate.failure"), flash.now[:alert]
   end
+
+  test "that we can donate to a charity at random" do
+    charities = Charity.all
+    initial_total = charities.to_a.sum(&:total)
+    expected_total = initial_total + (100 * 100)
+
+    post donate_path, amount: "100", omise_token: "tokn_X", charity: "random"
+
+    assert_template :index
+    assert_equal expected_total, charities.to_a.map(&:reload).sum(&:total)
+    assert_equal t("website.donate.success"), flash[:notice]
+  end
 end

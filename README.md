@@ -20,8 +20,8 @@ Thai Baht. But both Omise API and the total column in the charity table both exp
 Note that you must signup for an omise account and replace both pkey and skey
 in the `config/secrets.yml` file to use the app in development mode.
 
-To run the test simply run `rake test`. You'll notice that one test already
-fails. You'll have to fix the code (not the test) that produce this failure.
+To run the test simply run `rake test`. You'll notice that two tests already
+fails. You'll have to fix or add the code (not the test) that produce those failures.
 
 ## Exercices
 
