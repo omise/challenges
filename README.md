@@ -1,7 +1,7 @@
 # Tam Boon
 
-Tam Boon (or Making Merit in thai) is a simple rails app that contains bugs and
-rough code that you need to fix and refactor in order to be offered an
+Tam Boon (which means Making Merit in thai) is a simple rails app that contains
+bugs and rough code that you need to fix and refactor in order to be offered an
 interview at Omise.
 
 Read this document entirely before starting the exercices as you'll learn how
