@@ -18,4 +18,6 @@ end
 
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'guard-rails', require: false
+  gem 'guard-minitest', require: false
 end
