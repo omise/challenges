@@ -32,11 +32,17 @@ class Admin::CharitiesTest < ActionDispatch::IntegrationTest
     get new_admin_charity_path
 
     assert_difference "@_app.count_charities" do
-      post_via_redirect admin_charities_path, charity: { name: "Elephant Nature Park" }
+      post_via_redirect(admin_charities_path, charity: {
+        name: "Elephant Nature Park",
+        description: "A charity that helps elephants go back to the wild.",
+      })
     end
 
+    charity = @_app.all_charities.last
+
     assert_equal t("admin.charities.create.success"), flash.notice
-    assert_equal "Elephant Nature Park", @_app.all_charities.last.name
+    assert_equal "Elephant Nature Park", charity.name
+    assert_equal "A charity that helps elephants go back to the wild.", charity.description
   end
 
   test "that an authenticated user cannot create a new charity without a name" do
