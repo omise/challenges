@@ -20,7 +20,8 @@ class Admin::CharitiesTest < ActionDispatch::IntegrationTest
 
   test "that an authenticated user can reach the new charity form" do
     sign_in_user(users(:john).email, "helloworld")
-    get new_admin_charity_path
+    get admin_charities_path
+    assert_follow_link new_admin_charity_path
 
     assert_response :success
     assert_select "input[name='charity[name]']"
