@@ -26,16 +26,18 @@ class AppTest < ActiveSupport::TestCase
     assert charity.persisted?
   end
 
-  test "that a newly created charity has a total of 0" do
+  test "that a newly created charity has a total of 0 THB" do
     charity = @_app.create_charity(name: "Elephant Nature Park")
 
     assert_equal 0, charity.total
+    assert_equal "THB", charity.currency
   end
 
-  test "that even if we try to create a charity with more than 0 in the total we will get 0" do
+  test "that even if we try to create a charity with more than 0 THB in the total we will get 0 THB" do
     charity = @_app.create_charity(name: "Elephant Nature Park", total: 1000)
 
     assert_equal 0, charity.total
+    assert_equal "THB", charity.currency
   end
 
   test "that we cannot create a charity without a name" do

@@ -4,7 +4,8 @@ class App
   end
 
   def build_charity(attributes = {})
-    Charity.new(attributes.merge(total: 0))
+    # NOTE currency is for now fixed to THB.
+    Charity.new(attributes.merge(total: 0, currency: "THB"))
   end
 
   def create_charity(attributes)
