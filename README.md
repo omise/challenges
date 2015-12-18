@@ -11,12 +11,12 @@ back to us.
 ## The Setup
 
 This app provides a way for merit makers to donate money to a charity of their
-choosing using their credit card. There's two type of charities: monetary charity which will use the money as its see fit to conduct their agenda and item based charity which will use the money to buy items.
+choosing using their credit card.
 
 ## Exercices
 
-  1. fix the race condition in the balance amount column
-  2. refactor the code that switches between charities
+  1. fix the race condition in the balance amount column;
+  2. refactor the code in the donate action of the website controller;
   3. add a feature to allow a charity to be picked at random.
 
 ## Principles
