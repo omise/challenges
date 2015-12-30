@@ -72,7 +72,7 @@ You can't:
   - change existing behaviors;
   - install more gems than those already in the Gemfile;
   - change the database from postgres to something else;
-  - change any of the urls or paremeter names.
+  - change any of the urls or parameters names.
 
 ## Submitting Your Code
 
