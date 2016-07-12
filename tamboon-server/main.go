@@ -3,12 +3,16 @@ package main
 import (
 	"github.com/omise/omise-go"
 	"net/http"
+	"os"
 )
 
-const OMISE_SKEY = "skey_test_54hkqp52nrxqi8xtlny"
-
 func main() {
-	client, e := omise.NewClient("", OMISE_SKEY)
+	key := os.Getenv("OMISE_SKEY")
+	if key == "" {
+		panic("Please set OMISE_SKEY")
+	}
+
+	client, e := omise.NewClient("", key)
 	if e != nil {
 		panic(e)
 	}

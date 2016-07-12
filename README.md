@@ -13,6 +13,7 @@ the files manually by using the following commands:
 
 ```sh
 $ cd tamboon-server
+$ export OMISE_SKEY=skey_your_omise_key
 $ go run *.go
 ```
 
