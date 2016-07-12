@@ -34,9 +34,9 @@ The server should have 2 endpoints:
 
    ```json
    {
-     "customer_name": "John Smith",
-     "card_token": "tokn_test_123",
-     "donation_amount": 10000
+     "name":   "John Smith",
+     "token":  "tokn_test_123",
+     "amount": 10000
    }
    ```
 
