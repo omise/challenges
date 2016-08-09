@@ -2,61 +2,69 @@
 
 # Tam Boon
 
-Tam Boon (which means Making Merit in thai) is a simple rails app that contains
-bugs and rough code that you need to fix and refactor in order to be offered an
-interview at Omise.
+_Tam boon_ (which means "making merit" in Thai) is a simple Ruby on Rails
+app that contains bugs and rough code that you need to fix and refactor
+in order to be offered an interview at Omise.
 
-Read this document entirely before starting the exercices as you'll learn how
-we expect you to write code, what are the rules and how to submit your changes
+Read this document entirely before starting the exercises as you'll learn how
+we expect you to write code, our rules for code and how to submit your changes
 back to us.
 
-## The Setup
+## Setup
 
 This app provides a way for merit makers to donate money to a charity of their
 choosing using their credit card.
 
 At the root path you will find a list of charities, a field to enter an amount,
-and a series of credit card fields powered by omise. The amount must be sent in
-Thai Baht. But both Omise API and the total column in the charity table both expect an integer value in the smallest unit of the Thai Baht, the satang.
+and a series of credit card fields powered by Omise. The amount must be sent in
+Thai Baht. But both the Omise API and the `total` column in the charity
+table expect an integer value in the smallest unit of the Thai Baht, the
+satang.
 
-Note that you must signup for an omise account and replace both pkey and skey
-in the `config/secrets.yml` file to use the app in development mode.
+Note that you must register an Omise account and replace both the `pkey`
+and `skey` fields in `config/secrets.yml` to use the app in development
+mode.
 
 To run the test simply run `rake test`. You'll notice that two tests already
-fails. You'll have to fix or add the code (not the test) that produce those failures.
+fail. You'll have to fix or add code (without changing the test) to make
+the tests pass.
 
-## Exercices
+## Exercises
 
-  1. fix the race condition in the balance amount column
-  2. refactor and improve the code in the donate action
-  3. fix and add integration tests to allow subunits in the amount field
-  4. add a feature to allow a charity to be picked at random
+  1. Fix the race condition in the balance amount column.
+  2. Refactor and improve the code in the donate action.
+  3. Fix and add integration tests to allow subunits in the amount field.
+  4. Add a feature to allow a charity to be picked at random.
 
-Bonus point: Remove all `Rails.env.test?` conditionals from the code.
+Bonus exercise: Remove all `Rails.env.test?` conditionals from the code.
 
 ## Principles
 
 We want you to focus on those three principles while writing code:
 clarity, simplicity and defensiveness.
 
-Clarity: write clear code that any devs could read and understand in one go.  
-Simplicity: write gimmick-free and straightforward code with no ambiguities.  
-Defensiveness: cover edge cases and treat user inputs with care.  
+* Clarity: write clear code that any developer can read and understand
+  in one go.
+* Simplicity: write gimmick-free and straightforward code with no ambiguities.
+* Defensiveness: cover edge cases and treat user inputs with care.
 
 ## Testing
 
-This app comes with a full test suite. The integrations tests for the fix and
+This app comes with a full test suite. The integration tests for the fix and
 for the new feature are already written. It's up to you to write unit tests for
 the rest of the code you'll write in existing or newly created classes and
 modules. Note that we require that all tests must pass before we can invite you
 in for an interview.
 
-In test mode no network connection to Omise are made. In general we prefer
-duck-typing to make our test fast. In the codebase you'll notice that we use
-a bunch of conditionals that switch between doing call to the Omise library in
-normal use and constructing quick and dirty OpenStruct for test. Please keep it
-that way and make no network calls during the tests. But you're free to find
-another way to remove the conditionals as noted in the exercices list.
+In test mode no network connection is made to Omise servers. In the
+codebase you'll notice that we use conditionals to switch between doing
+call to the Omise library in normal use and constructing an OpenStruct
+for test.
+
+You may not make network calls during the tests. However, if you can
+think of a better way to do the testing than using these conditionals,
+you're free to implement this, and your improvement will be taken in
+to account in your scoring.
 
 ## Rules
 
@@ -65,19 +73,19 @@ You can:
   - re-organize the codebase;
   - create new classes/modules/methods;
   - modify existing code;
-  - add tables or columns in existing table in the database.
+  - add tables or columns in the existing database schema.
 
 You can't:
 
   - change existing behaviors;
   - install more gems than those already in the Gemfile;
-  - change the database from postgres to something else;
-  - change any of the urls or parameters names.
+  - change the database from PostgreSQL to something else;
+  - change any of the urls or parameter names.
 
 ## Submitting Your Code
 
 You must email your changes as a git patch to jobs@omise.co. Your patch must
-consist of multiple separate commits. One commits per exercice. Your commit
+consist of multiple separate commits, per exercise. Your commit
 message must communicate clearly what has been done in each commit. Have a look
 at previous commits to have a clear idea of what we expect.
 
