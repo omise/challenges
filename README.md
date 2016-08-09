@@ -56,13 +56,15 @@ the rest of the code you'll write in existing or newly created classes and
 modules. Note that we require that all tests must pass before we can invite you
 in for an interview.
 
-In test mode no network connection is made to Omise servers. In general
-we prefer duck-typing to make our tests fast. In the codebase you'll
-notice that we use conditionals to switch between doing call to the
-Omise library in
-normal use and constructing quick and dirty OpenStruct for test. Please keep it
-that way and make no network calls during the tests. But you're free to find
-another way to remove the conditionals as noted in the exercises list.
+In test mode no network connection is made to Omise servers. In the
+codebase you'll notice that we use conditionals to switch between doing
+call to the Omise library in normal use and constructing an OpenStruct
+for test.
+
+You may not make network calls during the tests. However, if you can
+think of a better way to do the testing than using these conditionals,
+you're free to implement this, and your improvement will be taken in
+to account in your scoring.
 
 ## Rules
 
