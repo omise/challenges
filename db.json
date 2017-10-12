@@ -1,0 +1,51 @@
+{
+  "charities": [
+    {
+      "id": 1,
+      "name": "Baan Kru Noi 01",
+      "image": "baan-kru-noi-01.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Baan kru noi 02",
+      "image": "baan-kru-noi-02.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Baan kru noi 03",
+      "image": "baan-kru-noi-03.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Baan kru noi 04",
+      "image": "baan-kru-noi-04.jpg"
+    }
+  ],
+  "payments": [
+    {
+      "charitiesId": 2,
+      "amount": 10,
+      "id": 1
+    },
+    {
+      "charitiesId": 1,
+      "amount": 20,
+      "id": 2
+    },
+    {
+      "charitiesId": 3,
+      "amount": 50,
+      "id": 3
+    },
+    {
+      "charitiesId": 4,
+      "amount": 100,
+      "id": 4
+    },
+    {
+      "charitiesId": 2,
+      "amount": 500,
+      "id": 5
+    }
+  ]
+}

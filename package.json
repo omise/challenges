@@ -1,0 +1,36 @@
+{
+  "name": "tamboon-react",
+  "version": "1.0.0",
+  "description": "Test Omise code challenge for frontend developer",
+  "main": "src/index.js",
+  "repository": "git@git.omise.co:ratchagarn/tamboon-react.git",
+  "author": "Ratchagarn Naewbuntad <ratchagarn@omise.co>",
+  "license": "MIT",
+  "scripts": {
+    "server": "json-server --watch db.json --port 3001",
+    "client": "webpack-dev-server",
+    "test": "jest"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "styled-components": "^2.2.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.8.0",
+    "eslint-plugin-react": "^7.4.0",
+    "jest": "^21.2.1",
+    "json-server": "^0.12.0",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  }
+}
