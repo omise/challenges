@@ -3,22 +3,27 @@
     {
       "id": 1,
       "name": "Baan Kru Noi 01",
-      "image": "baan-kru-noi-01.jpg"
+      "image": "baan-kru-noi.jpg"
     },
     {
       "id": 2,
-      "name": "Baan kru noi 02",
-      "image": "baan-kru-noi-02.jpg"
+      "name": "Habitat for Humanity Thailand",
+      "image": "habitat-for-humanity-thailand.jpg"
     },
     {
       "id": 3,
-      "name": "Baan kru noi 03",
-      "image": "baan-kru-noi-03.jpg"
+      "name": "Paper Ranger",
+      "image": "paper-ranger.jpg"
     },
     {
       "id": 4,
-      "name": "Baan kru noi 04",
-      "image": "baan-kru-noi-04.jpg"
+      "name": "Makhampom Theater",
+      "image": "makhampom-theater.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Thailand Association of the Blind",
+      "image": "thailand-association-of-the-blind.jpg"
     }
   ],
   "payments": [
