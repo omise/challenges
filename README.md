@@ -25,4 +25,4 @@ Pick the one that most suites the position you wish to apply.
 ### Free Style Challenge
 
 If you feel that none of the challenge is sufficient to demonstrate your coding ability,
-you can also choose to submit any project of your own choosing that you are proud of.
+you can also choose to submit any project of your own choosing that you are most proud of.
