@@ -29,6 +29,7 @@ export function postDonate(id, amount, currency) {
 	return function(dispatch) {
 		fetch('http://localhost:3001/payments', {
 			method: 'POST',
+			headers: new Headers({'content-type': 'application/json'}),
 			body: `{ "charitiesId": ${id}, "amount": ${amount}, "currency": "${currency}" }`,
 		})
 		.then(function(resp) { return resp.json(); })
