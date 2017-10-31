@@ -48,7 +48,7 @@ class PaymentOverlay extends React.Component {
 	    ));
 	    return (
 	    	<PaymentOverlayContainer>
-	    		<Button label="X" onclick={onCloseClick} />
+	    		<Button label="X" onclick={onCloseClick} absolute right top/>
 	    		<div>
 			    	{payments}
 			    	<div>

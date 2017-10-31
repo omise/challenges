@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import fetch from 'isomorphic-fetch';
-import {Container, Row, Col} from 'react-grid-system';
+import { Container, Row, Col } from 'react-grid-system';
 import { UpdateTotalDonate, UpdateMessage } from './actions'
+import { fetchCharities, fetchDonate, postDonate } from './actions/middleware'
 import DonateCard from './components/DonateCard'
-import { summaryDonations } from './helpers';
 
 const style = {
   color: 'red',
@@ -26,36 +25,12 @@ class App extends Component {
     }
 
     handlePay(id, amount, currency) {
-      const self = this;
-      fetch('http://localhost:3001/payments', {
-        method: 'POST',
-        body: `{ "charitiesId": ${id}, "amount": ${amount}, "currency": "${currency}" }`,
-      })
-      .then(function(resp) { return resp.json(); })
-      .then(function() {
-        self.props.dispatch(UpdateTotalDonate(amount));
-        self.props.dispatch(UpdateMessage(`Thanks for donate ${amount}!`,amount));
-
-        setTimeout(function() {
-          self.props.dispatch(UpdateMessage('', amount));
-        }, 2000);
-      });
+      this.props.dispatch(postDonate.call(this, id, amount, currency));
     }
 
     componentDidMount() {
-      const self = this;
-      let amount = 0;
-      fetch('http://localhost:3001/charities')
-        .then(function(resp) { return resp.json(); })
-        .then(function(data) {
-          self.setState({ charities: data }) });
-
-      fetch('http://localhost:3001/payments')
-        .then(function(resp) { return resp.json() })
-        .then(function(data) {
-          amount = summaryDonations(data.map((item) => (item.amount && item.amount>0) ? item.amount : 0)),
-          self.props.dispatch(UpdateTotalDonate(amount));
-        })
+      this.props.dispatch(fetchCharities.call(this));
+      this.props.dispatch(fetchDonate());
     }
 
     render() {

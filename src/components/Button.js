@@ -14,6 +14,9 @@ export const StyledButton = styled.button`
 	border-radius: 2px;
 	color: #5781F6;
 	float: ${props => props.right ? 'right' : 'none'};
+	position: ${props => props.absolute ? 'absolute' : 'static'};
+	right: ${props => props.right ? '10px' : ''};
+	top: ${props => props.top ? '10px' : ''};
 `;
 
 export default Button;
