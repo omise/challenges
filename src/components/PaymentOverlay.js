@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button'
+import StyledButton from './StyledButton';
 import styled from 'styled-components';
 
 const PaymentOverlayContainer = styled.div`
@@ -12,6 +12,30 @@ const PaymentOverlayContainer = styled.div`
     background: #fff;
     z-index:1;
     text-align: center;
+`;
+
+const PaymentsOptions = styled.div`
+    position: absolute;
+    top: 0;
+    height: 20%;
+    bottom: 0;
+    margin: auto;
+    left: 0;
+    right: 0
+`;
+
+const CloseButton = styled(StyledButton)`
+    border: none;
+    color: #444;
+    font-weight:bold;
+    right: 10px;
+    position: absolute;
+    top: 10px;
+`;
+
+const PaymentButton = styled(StyledButton)`
+    display: block;
+    margin: 10px auto;
 `;
 
 class PaymentOverlay extends React.Component {
@@ -48,13 +72,11 @@ class PaymentOverlay extends React.Component {
 	    ));
 	    return (
 	    	<PaymentOverlayContainer>
-	    		<Button label="X" onclick={onCloseClick} absolute right top/>
-	    		<div>
-			    	{payments}
-			    	<div>
-			    		<Button label="Pay" onclick={this.handleOnPay.bind(this)} />
-			    	</div>
-			    </div>
+	    		<CloseButton onClick={onCloseClick} absolute right top>X</CloseButton>
+	    		<PaymentsOptions>
+			    	{payments}			    
+			    	<PaymentButton onClick={this.handleOnPay.bind(this)} block center>Pay</PaymentButton>	
+			    </PaymentsOptions>
 		    </PaymentOverlayContainer>
 	    )
 	}

@@ -6,13 +6,22 @@ import { UpdateTotalDonate, UpdateMessage } from './actions'
 import { fetchCharities, fetchDonate, postDonate } from './actions/middleware'
 import DonateCard from './components/DonateCard'
 
-const style = {
-  color: 'red',
-  margin: '1em 0',
-  fontWeight: 'bold',
-  fontSize: '16px',
-  textAlign: 'center',
-};
+const DonateMessage = styled.p`
+  color: #5B657C;
+  margin: 1em 0;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+`;
+
+const LastDonateMessage = styled(DonateMessage)`
+  color: red;
+`;
+
+const AppTitle = styled.h1`
+  color: #5B657C;
+  text-align:center;
+`;
 
 class App extends Component {
     constructor(props) {
@@ -25,7 +34,9 @@ class App extends Component {
     }
 
     handlePay(id, amount, currency) {
-      this.props.dispatch(postDonate.call(this, id, amount, currency));
+      if(amount>0) {
+        this.props.dispatch(postDonate.call(this, id, amount, currency));
+      }
     }
 
     componentDidMount() {
@@ -48,9 +59,9 @@ class App extends Component {
 
       return (
         <div>
-          <h1>Tamboon React</h1>
-          <p>All donations: {donate}</p>
-          <p style={style}>{message}</p>
+          <AppTitle>Tamboon React</AppTitle>
+          <DonateMessage>All donations: {donate}</DonateMessage>
+          <LastDonateMessage>{message}</LastDonateMessage>
           <Container>
             <Row>
               {cards}
