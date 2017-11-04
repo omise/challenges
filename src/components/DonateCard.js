@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-//import Button from './Button';
 import StyledButton from './StyledButton';
 import PaymentOverlay from './PaymentOverlay';
 import PaymentOption from './PaymentOption';
@@ -16,6 +15,7 @@ const Card = styled.div`
 const CharityImage = styled.div`
 	height: 200px;
     width: 100%;
+    border-radius: 3px 3px 0 0;
     background: center no-repeat url(${props => props.imagePath ? props.imagePath : 'none'});
 `;
 
@@ -31,10 +31,6 @@ class DonateCard extends React.Component {
 	      showPayment: false
 	    }
 	}
-	handlePay() {
-		alert('pay')
-	}
-
 	showPaymentOverlay() {
     	this.setState({showPayment: !this.state.showPayment})
 	}
@@ -47,7 +43,7 @@ class DonateCard extends React.Component {
 				<div>
 					<CharityImage imagePath={imageURL}/>
 				 	<CardFooter>
-				 		<span>{name}</span>
+				 		<strong>{name}</strong>
 				 		<StyledButton onClick={this.showPaymentOverlay.bind(this)} alignRight>Donate</StyledButton>
 				 		
 				 	</CardFooter>

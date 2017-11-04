@@ -3,20 +3,17 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-grid-system';
 import { UpdateTotalDonate, UpdateMessage } from './actions'
-import { fetchCharities, fetchDonate, postDonate } from './actions/middleware'
+import { fetchCharities, fetchDonate, postDonate, popMessage } from './actions/middleware'
 import DonateCard from './components/DonateCard'
+import PopMessage from './components/PopMessage'
 
 const DonateMessage = styled.p`
   color: #5B657C;
   margin: 1em 0;
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 1.1em;
   text-align: center;
 `;
 
-const LastDonateMessage = styled(DonateMessage)`
-  color: red;
-`;
 
 const AppTitle = styled.h1`
   color: #5B657C;
@@ -28,7 +25,8 @@ class App extends Component {
       super();
       this.state = {
         charities: [],
-        selectedAmount: 10,
+        selectedAmount: 0,
+        popMessage: false
       };
       this.handlePay = this.handlePay.bind(this);
     }
@@ -36,6 +34,8 @@ class App extends Component {
     handlePay(id, amount, currency) {
       if(amount>0) {
         this.props.dispatch(postDonate.call(this, id, amount, currency));
+      } else {
+        this.props.dispatch(popMessage.call(this, `Please select amount to Donate!`));
       }
     }
 
@@ -60,8 +60,12 @@ class App extends Component {
       return (
         <div>
           <AppTitle>Tamboon React</AppTitle>
-          <DonateMessage>All donations: {donate}</DonateMessage>
-          <LastDonateMessage>{message}</LastDonateMessage>
+          <DonateMessage>All donations: <strong ref="donate-amount">{donate}</strong></DonateMessage>
+          {
+            this.state.popMessage ?
+              <PopMessage message={message}/>
+            : null
+          }
           <Container>
             <Row>
               {cards}

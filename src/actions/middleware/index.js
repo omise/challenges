@@ -26,6 +26,7 @@ export function fetchDonate() {
 }
 
 export function postDonate(id, amount, currency) {
+	const self = this;
 	return function(dispatch) {
 		fetch('http://localhost:3001/payments', {
 			method: 'POST',
@@ -35,11 +36,18 @@ export function postDonate(id, amount, currency) {
 		.then(function(resp) { return resp.json(); })
 		.then(function() {
 			dispatch(UpdateTotalDonate(amount));
-			dispatch(UpdateMessage(`Thanks for donate ${amount}!`,amount));
-
-			setTimeout(function() {
-				dispatch(UpdateMessage('', amount));
-			}, 2000);
+			dispatch(popMessage.call(self, `Thanks for donate ${amount}!`));
 		});
+	}
+}
+
+export function popMessage(msg) {
+	const self = this;
+	return function (dispatch) {
+		self.setState({ popMessage: true });
+		dispatch(UpdateMessage(msg));
+		setTimeout(function() {
+			self.setState({ popMessage: false })
+		}, 2000);
 	}
 }

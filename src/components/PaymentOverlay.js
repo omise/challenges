@@ -1,6 +1,7 @@
 import React from 'react';
-import StyledButton from './StyledButton';
 import styled from 'styled-components';
+import StyledButton from './StyledButton';
+import PaymentOption from './PaymentOption';
 
 const PaymentOverlayContainer = styled.div`
     position: absolute;
@@ -12,6 +13,7 @@ const PaymentOverlayContainer = styled.div`
     background: #fff;
     z-index:1;
     text-align: center;
+    border-radius: 3px;
 `;
 
 const PaymentsOptions = styled.div`
@@ -38,6 +40,12 @@ const PaymentButton = styled(StyledButton)`
     margin: 10px auto;
 `;
 
+const PaymentLabel = styled.div`
+	font-size: 1.2em;
+	margin-bottom: 5px;
+	color:#1c3284;
+`;
+
 class PaymentOverlay extends React.Component {
 	constructor() {
 		super();
@@ -53,28 +61,26 @@ class PaymentOverlay extends React.Component {
 		this.props.onPayClick(id, selectedAmount, currency);
 	}
 
+	updateSelectedCharity(id, amount, currency) {
+        this.setState({	 
+        	selectedAmount: amount,
+        	id: id,
+        	currency: currency
+        })
+	}
+
 	render() {
 		const { id, currency, onPayClick, onCloseClick } = this.props;
 		let self = this;
 		const payments = [10, 20, 50, 100, 500].map((amount, j) => (
-	      <label key={j}>
-	        <input
-	          type="radio"
-	          name="payment"
-	          onClick={function() {
-	            self.setState({ 
-	            	selectedAmount: amount,
-	            	id: id,
-	            	currency: currency
-	            })
-	          }} /> {amount}
-	      </label>          
+	      <PaymentOption key={j} amount={amount} id={id} currency={currency} onclick={self.updateSelectedCharity.bind(this)} />          
 	    ));
 	    return (
 	    	<PaymentOverlayContainer>
-	    		<CloseButton onClick={onCloseClick} absolute right top>X</CloseButton>
+	    		<CloseButton onClick={onCloseClick} absolute right top>X</CloseButton>	    		
 	    		<PaymentsOptions>
-			    	{payments}			    
+	    			<PaymentLabel>Select the amount to Donate({currency})</PaymentLabel>
+			    	{payments}	    
 			    	<PaymentButton onClick={this.handleOnPay.bind(this)} block center>Pay</PaymentButton>	
 			    </PaymentsOptions>
 		    </PaymentOverlayContainer>
