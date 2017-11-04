@@ -1,113 +1,80 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import fetch from 'isomorphic-fetch';
+import { Container, Row, Col } from 'react-grid-system';
+import { UpdateTotalDonate, UpdateMessage } from './actions'
+import { fetchCharities, fetchDonate, postDonate, popMessage } from './actions/middleware'
+import DonateCard from './components/DonateCard'
+import PopMessage from './components/PopMessage'
 
-import { summaryDonations } from './helpers';
-
-
-const Card = styled.div`
-  margin: 10px;
-  border: 1px solid #ccc;
+const DonateMessage = styled.p`
+  color: #5B657C;
+  margin: 1em 0;
+  font-size: 1.1em;
+  text-align: center;
 `;
 
-export default connect((state) => state)(
-  class App extends Component {
+
+const AppTitle = styled.h1`
+  color: #5B657C;
+  text-align:center;
+`;
+
+class App extends Component {
     constructor(props) {
       super();
-
       this.state = {
         charities: [],
-        selectedAmount: 10,
+        selectedAmount: 0,
+        popMessage: false
       };
+      this.handlePay = this.handlePay.bind(this);
+    }
+
+    handlePay(id, amount, currency) {
+      if(amount>0) {
+        this.props.dispatch(postDonate.call(this, id, amount, currency));
+      } else {
+        this.props.dispatch(popMessage.call(this, `Please select amount to Donate!`));
+      }
     }
 
     componentDidMount() {
-      const self = this;
-      fetch('http://localhost:3001/charities')
-        .then(function(resp) { return resp.json(); })
-        .then(function(data) {
-          self.setState({ charities: data }) });
-
-      fetch('http://localhost:3001/payments')
-        .then(function(resp) { return resp.json() })
-        .then(function(data) {
-          self.props.dispatch({
-            type: 'UPDATE_TOTAL_DONATE',
-            amount: summaryDonations(data.map((item) => (item.amount))),
-          });
-        })
+      this.props.dispatch(fetchCharities.call(this));
+      this.props.dispatch(fetchDonate());
     }
 
     render() {
       const self = this;
       const cards = this.state.charities.map(function(item, i) {
-        const payments = [10, 20, 50, 100, 500].map((amount, j) => (
-          <label key={j}>
-            <input
-              type="radio"
-              name="payment"
-              onClick={function() {
-                self.setState({ selectedAmount: amount })
-              }} /> {amount}
-          </label>
-        ));
-
         return (
-          <Card key={i}>
-            <p>{item.name}</p>
-            {payments}
-            <button onClick={handlePay.call(self, item.id, self.state.selectedAmount, item.currency)}>Pay</button>
-          </Card>
+            <Col md={6} sm={12} key={i}>
+              <DonateCard key={i} id={item.id} onPayClick={self.handlePay} name={item.name} image={item.image} currency={item.currency} />
+            </Col>
         );
       });
 
-      const style = {
-        color: 'red',
-        margin: '1em 0',
-        fontWeight: 'bold',
-        fontSize: '16px',
-        textAlign: 'center',
-      };
       const donate = this.props.donate;
       const message = this.props.message;
 
       return (
         <div>
-          <h1>Tamboon React</h1>
-          <p>All donations: {donate}</p>
-          <p style={style}>{message}</p>
-          {cards}
+          <AppTitle>Tamboon React</AppTitle>
+          <DonateMessage>All donations: <strong ref="donate-amount">{donate}</strong></DonateMessage>
+          {
+            this.state.popMessage ?
+              <PopMessage message={message}/>
+            : null
+          }
+          <Container>
+            <Row>
+              {cards}
+            </Row>
+          </Container>
         </div>
       );
     }
   }
-);
 
-function handlePay(id, amount, currency) {
-  const self = this;
-  return function() {
-    fetch('http://localhost:3001/payments', {
-      method: 'POST',
-      body: `{ "charitiesId": ${id}, "amount": ${amount}, "currency": "${currency}" }`,
-    })
-      .then(function(resp) { return resp.json(); })
-      .then(function() {
-        self.props.dispatch({
-          type: 'UPDATE_TOTAL_DONATE',
-          amount,
-        });
-        self.props.dispatch({
-          type: 'UPDATE_MESSAGE',
-          message: `Thanks for donate ${amount}!`,
-        });
 
-        setTimeout(function() {
-          self.props.dispatch({
-            type: 'UPDATE_MESSAGE',
-            message: '',
-          });
-        }, 2000);
-      });
-  }
-}
+export default connect((state) => state)(App);
