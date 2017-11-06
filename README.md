@@ -10,7 +10,6 @@ projects that are very relevant to the tasks you will be working on at Omise.
 * Average completion time so far has been around one to two weeks.
 * Submission is done via a [git patch](https://git-scm.com/docs/git-format-patch). Attach
   your patch in an e-mail and send it to [jobs@omise.co](mailto:jobs@omise.co).
-* Alternatively, you can also push it onto a GitHub public repository and send a link.
 
 
 ### Challenges
