@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import fetch from 'isomorphic-fetch';
 
 import { summaryDonations } from './helpers';
 
-
-const Card = styled.div`
-  margin: 10px;
-  border: 1px solid #ccc;
-`;
+import Card from 'components/static/Card';
+import InputRadio from 'components/static/InputRadio';
+import Message from 'components/static/Message';
 
 export default connect((state) => state)(
   class App extends Component {
@@ -39,36 +36,36 @@ export default connect((state) => state)(
         })
     }
 
+    handleOnChange(event) {
+      this.setState({
+        selectedAmount: event.target.value,
+      })
+    }
+
     render() {
-      const self = this;
-      const cards = this.state.charities.map(function(item, i) {
+      const cards = this.state.charities.map((item, i) => {
         const payments = [10, 20, 50, 100, 500].map((amount, j) => (
-          <label key={j}>
-            <input
-              type="radio"
-              name="payment"
-              onClick={function() {
-                self.setState({ selectedAmount: amount })
-              }} /> {amount}
-          </label>
+          <InputRadio
+            key={j}
+            type="radio"
+            name="payment"
+            id={`option-${amount}-${i}`}
+            label={amount}
+            value={amount}
+            onChange={this.handleOnChange.bind(this)}
+          />  
         ));
 
         return (
           <Card key={i}>
+            <img src={`images/${item.image}`} />
             <p>{item.name}</p>
             {payments}
-            <button onClick={handlePay.call(self, item.id, self.state.selectedAmount, item.currency)}>Pay</button>
+            <button onClick={handlePay.call(this, item.id, this.state.selectedAmount, item.currency).bind(this)}>Pay</button>
           </Card>
         );
       });
 
-      const style = {
-        color: 'red',
-        margin: '1em 0',
-        fontWeight: 'bold',
-        fontSize: '16px',
-        textAlign: 'center',
-      };
       const donate = this.props.donate;
       const message = this.props.message;
 
@@ -76,7 +73,7 @@ export default connect((state) => state)(
         <div>
           <h1>Tamboon React</h1>
           <p>All donations: {donate}</p>
-          <p style={style}>{message}</p>
+          <Message>{message}</Message>
           {cards}
         </div>
       );
