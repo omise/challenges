@@ -1,37 +1,44 @@
 import styled from 'styled-components';
+import { palette } from 'config/cssVars';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const Label = styled.label`
+    color: ${palette.gray};
     position: relative;
+    padding-left: 20px;
     display: inline-block;
     vertical-align: middle;
-    line-height: 1.45;
     margin: 0;
     cursor: pointer;
 
     &:before {
         content: '';
-        display: inline-block;
-        vertical-align: text-top;
-        margin-right: 9px;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        border: 1px solid blue;
+        display: block;
+        position: absolute;
+        left: 0;
+        top 0;
+        bottom: 0;
+        margin: auto;
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+        border: 2px solid ${palette.blueDark};
         z-index: 0;
     }
 
     &:after {
         content: '';
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: blue;
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        background: ${palette.blue};
 
         position: absolute;
-        top: 5px;
+        top: 0px;
         left: 3px;
+        bottom: 0;
+        margin: auto;
         z-index: 1;
         opacity: 0;
         transition: opacity 0.1s ease-in-out;
@@ -40,19 +47,19 @@ const Label = styled.label`
 
 const Input = styled.input`
     display: block;
-    vertical-align: middle;
     position: absolute;
     height: 18px;
     width: 18px;
     z-index: 9;
     opacity: 0;
-
+    cursor: pointer;
 `;
 
 const InputWrapper = styled.div`
-    position: relative;
     display: inline-block;
-    margin-right: 18px;
+    position: relative;
+    margin 0 5px;
+    padding: 5px 0;
 
     & input[type=radio]:checked + label:after {
         opacity: 1;
