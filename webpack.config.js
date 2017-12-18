@@ -9,6 +9,14 @@ const config = {
     publicPath: '/',
   },
 
+  resolve: {
+    alias: {
+      components: paths.appComponents,
+      static: paths.appStatic,
+      config: paths.appConfig,
+    },
+  },
+
   devtool: 'inline-source-map',
 
   module: {
@@ -21,7 +29,7 @@ const config = {
         },
       },
       {
-        test: /\.(png|jp(e*)g|svg)$/,
+        test: /\.(png|jp(e*)g|gif)$/,
         use: [
           {
             loader: 'url-loader',
@@ -32,7 +40,18 @@ const config = {
           },
           'image-webpack-loader',
         ] 
-      }
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'fonts/[name].[ext]',
+            },
+          },  
+        ],
+      },
     ],
   },
 

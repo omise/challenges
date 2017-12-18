@@ -10,6 +10,9 @@ export default {
   appBuild              : resolveApp('build/js'),
   appPublic             : resolveApp('public'),
   appComponents         : resolveApp('src/components'),
+  appStatic             : resolveApp('src/components/static'),
   appIndexHtmlTemplate  : resolveApp('public/index.ejs'),
   appImagesDir          : resolveApp('public/images'),
+  appFontsDir           : resolveApp('public/fonts'),
+  appConfig             : resolveApp('config'),
 };
