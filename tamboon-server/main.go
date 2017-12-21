@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/omise/omise-go"
 	"net/http"
 	"os"
+
+	"github.com/omise/omise-go"
 )
 
 func main() {

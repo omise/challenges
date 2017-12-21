@@ -3,9 +3,10 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
+
 	"github.com/omise/omise-go"
 	"github.com/omise/omise-go/operations"
-	"net/http"
 )
 
 type TamboonHandler struct {
@@ -16,10 +17,10 @@ func (handler *TamboonHandler) ServeHTTP(resp http.ResponseWriter, req *http.Req
 	method, path := req.Method, req.URL.Path
 	fmt.Printf("%s %s\n", method, path)
 
-	if method == "GET" && path == "/" {
+	if method == "GET" && path == "/charities" {
 		handler.GET(resp, req)
 
-	} else if method == "POST" && path == "/donate" {
+	} else if method == "POST" && path == "/donations" {
 		handler.POST(resp, req)
 
 	} else {

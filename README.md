@@ -19,7 +19,7 @@ $ go run *.go
 
 The server should have 2 endpoints:
 
-1. `GET /` - This endpoint should return a JSON list of charities similar to the
+1. `GET /charities` - This endpoint should return a JSON list of charities similar to the
    following:
 
    ```json
@@ -31,7 +31,7 @@ The server should have 2 endpoints:
    ]
    ```
 
-2. `POST /donate` - This endpoint should accepts a JSON payload similar to the following:
+2. `POST /donations` - This endpoint should accepts a JSON payload similar to the following:
 
    ```json
    {
