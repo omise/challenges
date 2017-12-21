@@ -88,18 +88,10 @@ The application should use the default platform style and should consists of two
 * (Bonus) Handles network failure gracefully.
 * (Bonus) Follow good security principles.
 * (Bonus) Follow good UI/UX principles.
+* (Bonus) UI Tests.
 
 **DONTs**
 
 Since this is just a quick test, you do not need to spend time on:
 
-* User interface tests.
 * Database, persistent storage or any form of caching.
-
-# SUBMISSION
-
-1. Create two public repository on https://github.com
-   * One for the server. (if you are tasked to write one.)
-   * One for the android app.
-2. Push your commits to GitHub.
-3. Send us the links to both repositories.
