@@ -7,14 +7,18 @@ TamBoon is Thai word for making a merit. The app consists of two parts:
 
 ### SERVER-SIDE API
 
-An example implementation in Go (with a pre-compiled OS X binary) is provided inside the
-`tamboon-server` folder, alternatively you can [install Go](https://golang.org) and run
-the files manually by using the following commands:
+Two example implementations are availble for you to use:
+
+* A [Go](https://golang.org/) implementation (with a pre-compiled OS X binary) is provided
+  inside the `tamboon-server` folder with a `Makefile` for building and running it.
+* A [Swagger API automatic server](https://app.swaggerhub.com/apis/chakritw/tamboon-api/1.0.0)
+
+You will need to obtain an Omise API key in order to start the Go implementation.
 
 ```sh
 $ cd tamboon-server
 $ export OMISE_SKEY=skey_your_omise_key
-$ go run *.go
+$ make run
 ```
 
 The server should have 2 endpoints:
@@ -67,13 +71,13 @@ Since this is just a quick test, you do not need to spend time on:
 
 The application should use the default platform style and should consists of two screens:
 
-1. Charity list screen. - Load list of charities from the `/` server-side endpoint and
-   display them using `ListView` (Android) or `UITableView` (iOS). Tapping a charity
-   should bring up the next screen.
+1. Charity list screen. - Load list of charities from the `/charities` server-side
+   endpoint and display them using `ListView` (Android) or `UITableView` (iOS). Tapping a
+   charity should bring up the next screen.
 
 2. Charity donation screen. - Shows a credit card number entry form and a field to enter
-   donation amount in THB. Submitting the form should displays a progress spinner and
-   send data to the `/donate` endpoint in the background. After everything is complete,
+   donation amount in THB. Submitting the form should displays a progress spinner and send
+   data to the `/donations` endpoint in the background. After everything is complete,
    bring up the next screen.
 
 3. Success screen. - Shows a simple dismiss button that goes back to the first screen.
