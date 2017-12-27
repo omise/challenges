@@ -41,7 +41,7 @@ export default injectGlobal`
     }
 
     html {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     html,
@@ -55,13 +55,12 @@ export default injectGlobal`
     body {
         padding-top: 1px;
         margin-top: -1px;
-
         background: ${palette.grayBg};
     }
 
     body {
         font-family: ${family.book};
-        line-height: 1.5;
+        line-height: 1.333;
     }
 
     h1 {
@@ -70,6 +69,7 @@ export default injectGlobal`
 
     h1, h2, h3 {
         font-family: ${family.book};
+        font-weight: normal;
     }
 
     h4, h5 {
@@ -94,7 +94,7 @@ export default injectGlobal`
     }
 
     button,
-    input[type=submit] {
+    input {
         box-shadow: none;
         border-radius: 3px;
         text-shadow: none;
@@ -107,8 +107,15 @@ export default injectGlobal`
 
         &:focus,
         &:active {
-            outline: none;
+            outline: none!important;
         }
     }
+
+    fieldset {
+        margin:0;
+        padding: 0;
+        border-color: transparent;
+    }
+      
 
 `;
