@@ -1,31 +1,35 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import rootReducer from './reducers';
+
+import thunk from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 
 import './globalStyle';
+import App from 'components/App';
 
-import App from './App';
+const loggerMiddleware = createLogger();
 
-const store = createStore(function(state, action) {
-  const _state = state == null ? {
-    donate: 0,
-    message: '',
-  } : state;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  rootReducer, 
+  composeEnhancers(
+  applyMiddleware(
+    thunk, 
+    loggerMiddleware
+  )
+));
 
-  switch (action.type) {
-    case 'UPDATE_TOTAL_DONATE':
-      return Object.assign({}, _state, {
-        donate: _state.donate + action.amount,
-      });
-    case 'UPDATE_MESSAGE':
-      return Object.assign({}, _state, {
-        message: action.message,
-      });
-
-    default: return _state;
-  }
-});
+import { fetchCharities, fetchPayments, formAmountValueUpdated, formCharityIdUpdated, newPaymentReceived } from './actions';
+store.subscribe(() => console.log('store', store.getState()))
+store.dispatch(fetchCharities());
+store.dispatch(fetchPayments());
+store.dispatch(formAmountValueUpdated());
+store.dispatch(formCharityIdUpdated());
+store.dispatch(newPaymentReceived());
 
 render(
   <Provider store={store}>

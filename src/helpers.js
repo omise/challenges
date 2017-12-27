@@ -1,3 +1,12 @@
-export const summaryDonations = (danations) => (
-  danations.reduce((accumulator, value) => (accumulator + value))
+export const summaryDonations = (donations) => (
+  donations.reduce((accumulator, value) => (accumulator + value))
 );
+
+export const  getClosest = (arr, val) => ( 
+  arr.reduce((prev, curr) => (
+      Math.abs(curr - val) < Math.abs(prev - val) ? curr : prev
+  )));
+
+export const getCharityById = (arr, id) => {
+  return arr.find(key.id === id)
+}
