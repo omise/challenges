@@ -1,5 +1,6 @@
-import paths from './paths';
+import webpack from 'webpack';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
+import paths from './paths';
 
 const config = {
   entry: './src/index.js',
@@ -72,6 +73,9 @@ const config = {
     historyApiFallback: true,
     disableHostCheck: true,
     contentBase: 'public',
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
   },
 };
 
