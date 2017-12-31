@@ -16,6 +16,6 @@ export const family = {
 
 export const text = {
   selectDonation: 'Select the amount you would like to donate',
-  totalDonations: 'Donations to date:',
+  totalDonations: 'Donated to date',
   ctaDonate: 'Donate',
 };
