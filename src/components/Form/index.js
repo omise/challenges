@@ -5,8 +5,7 @@ import FormHeader from 'components/FormHeader';
 import { connect } from 'react-redux';
 import { Form, reduxForm, formValueSelector, reset, submit } from 'redux-form';
 import { initialState } from 'reducers/initialState';
-// import { newDonation, fetchPayments } from 'reducers/api';
-import { submitPayment } from 'reducers/api';
+import { submitPayment } from 'reducers/actions/api';
 
 let DonationForm = props => {
     const { handleSubmit } = props;

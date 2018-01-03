@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import { reset } from 'redux-form';
-import { fetchPayments } from './actions';
-import * as types from './actionTypes';
+import { fetchPayments } from 'reducers/actions';
+import * as types from 'reducers/actionTypes';
 
 
 
