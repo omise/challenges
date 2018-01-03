@@ -5,7 +5,8 @@ import paths from './paths';
 const config = {
   entry: './src/index.js',
   output: {
-    filename: 'js/[name].js',
+    filename: 'js/[name].[chunkhash:8].js',
+    chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
     path: paths.appBuild,
     publicPath: '/',
   },
@@ -15,6 +16,9 @@ const config = {
       components: paths.appComponents,
       static: paths.appStatic,
       config: paths.appConfig,
+      actions: paths.appActions,
+      reducers: paths.appReducers,
+      utils: paths.appUtils,
     },
   },
 
@@ -30,16 +34,36 @@ const config = {
         },
       },
       {
-        test: /\.(png|jp(e*)g|gif)$/,
+        test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
+          { 
+            'loader': 'file-loader',
+            'options': {
+              name: '[name].[chunkhash:8].[ext]',
+            }
+          },
           {
-            loader: 'url-loader',
+            loader: 'image-webpack-loader',
             options: {
-              limit: 40000,
-              name: 'images/[hash]-[name].[ext]',
+              mozjpeg: {
+                progressive: true,
+                quality: 75,
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false
+              },
+              webp: {
+                quality: 75
+              }
             },
           },
-          'image-webpack-loader',
         ] 
       },
       {
@@ -63,7 +87,7 @@ const config = {
       title: 'Omise Tamboon React',
       favicon: `${paths.appPublic}/favicon.ico`,
       inject: true,
-    }),
+    })
   ],
 
   devServer: {
@@ -75,6 +99,12 @@ const config = {
     contentBase: 'public',
     headers: {
       'Access-Control-Allow-Origin': '*'
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        secure: false
+      } 
     }
   },
 };

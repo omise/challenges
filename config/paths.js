@@ -14,5 +14,8 @@ export default {
   appIndexHtmlTemplate  : resolveApp('public/index.ejs'),
   appImagesDir          : resolveApp('public/images'),
   appFontsDir           : resolveApp('public/fonts'),
-  appConfig             : resolveApp('config'),
+  appUtils              : resolveApp('utils'),
+  appReducers           : resolveApp('src/reducers'),
+  appActions            : resolveApp('src/reducers/actions'),
+  appConfig             : resolveApp('config')
 };
