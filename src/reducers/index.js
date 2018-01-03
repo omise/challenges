@@ -1,109 +1,68 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
+import * as types from './actionTypes';
 import { initialState } from './initialState';
-import * as types from '../constants/actionTypes';
 
-import { reducer as formReducer } from 'redux-form'
-
-const SELECT_CHARITY = 'SELECT_CHARITY';
-
-export const donationForm = (state = initialState.donationForm, action ) => {
+const formInitialValues = ( state = initialState.formInitialValues, action ) => {
     switch (action.type) {
-        case types.FETCHING_FORM_DATA:
+        case types.LOAD_INITIAL_FORM_DATA:
             return {
-                ...state,
-                isLoading: state.isLoading
+                data: action.data,
             }
-        case types.FETCH_FORM_DATA_SUCCESS:
-            return {
-                ...state,
-                isLoading: !state.isLoadning,
-                values: [
-                    ...state,
-                    {
-                        items: action.items,
-                        payments: action.payments
-                    }
-                ]        
-            }
-        case types.UPDATE_FORM_DATA:
-            return {
-                ...state,
-                values: [
-                    ...state,
-                    {
-                        charityId: action.charityId,
-                        amount: action.amount,
-                    }
-                ]
-            }
+        default:
+            return state
     }
 }
 
-
-/* export const charities = (state = initialState.charities, action ) => {
+const payments = ( state = initialState.payments, action ) => {
     switch (action.type) {
-        case types.FETCHING_CHARITIES:
+        case types.LOADING_PAYMENTS_DATA:
             return {
                 ...state,
                 isLoading: true,
             }
-        case types.FETCH_CHARITIES_SUCCESS:
+        case types.RECEIVED_PAYMENTS_DATA:
+            return {
+                ...state,
+                isLoading: !state.isLoading,
+                items: action.items,
+                total: action.total,
+            }
+        case types.NEW_DONATION_PAYMENT_RECEIVED: 
+            return {
+                ...state,
+                total: action.amount
+            }
+        default:
+            return state
+    }
+}
+
+const charities = ( state = initialState.charities, action ) => {
+    switch (action.type) {
+        case types.LOADING_CHARITIES_DATA:
+            return {
+                ...state,
+            }
+        case types.RECEIVED_CHARITIES_DATA: 
             return {
                 ...state,
                 isLoading: !state.isLoading,
                 items: action.items,
             }
-        case types.CHARITY_IS_SELECTED:
-            return {
-                ...state,
-                charitiesId: action.charitiesId,
-            }
+        
         default:
             return state
+        }
     }
-};
 
-export const donations = (state = initialState.donations, action ) => {
-    switch (action.type) {
-        case types.FETCHING_PAYMENTS:
-            return {
-                ...state,
-                isLoading: true,
-            }
-        case types.FETCH_PAYMENTS_SUCCESS:
-            return {
-                ...state,
-                isLoading: !state.isLoading,
-                payments: action.payments,
-                amounts: action.amounts
-            }
-        case types.AMOUNT_IS_SELECTED:
-            return {
-                ...state,
-                amount: action.amount,
-            }
-        default:
-            return state    
-    }
-}
 
-export const charityForm = (state = initialState.charityForm, action ) => {
-    switch (action.type) {
-        case types.FORM_ID_VALUE_UPDATED:
-            return {
-                ...state,
-                charitiesId: action.charitiesId,
-            }
-        case types.FORM_AMOUNT_VALUE_UPDATED:
-            return {
-                ...state,
-                amount: action.amount
-            }
-        default: 
-            return state;
-    }
-}
- */
-export default combineReducers({
-    donationForm
+const rootReducer = combineReducers({
+    payments,
+    // total,
+    charities,
+    formInitialValues,
+    form: formReducer
 });
+
+export default rootReducer;

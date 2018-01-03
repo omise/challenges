@@ -1,20 +1,19 @@
-export const initialState = 
-    {
-        charities: {
-            isLoading: true,
-            items: []
-        },
-
-        donations: {
-            isLoading: true,
-            payments: [],
-            amounts: 0,
-        },
-
-        charityForm: {
-            charitiesId: null,
+export const initialState =  {
+    formInitialValues: {
+        data: {
             amount: 10,
-        }
+            currency: 'THB'
+        },
+    },
+
+    payments: {
+        isLoading: true,
+        items: [],
+        total: 0
+    },
+
+    charities: {
+        isLoading: true,
+        items: [],
     }
-
-
+}
