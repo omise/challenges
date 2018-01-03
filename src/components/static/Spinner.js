@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { palette } from 'config/cssVars';
+import { palette } from 'config/variables';
 
 const skBounceDelay = keyframes`
   0%,
