@@ -1,30 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { text } from 'config/cssVars';
-import { getClosest } from '../helpers';
-import { charityIsSelected } from '../actions';
+import React from 'react';
+import DonationForm from 'components/Form'
 
-import AppHeader from 'static/AppHeader';
-import Charities from 'components/Charities';
-import Main from 'static/Main';
-import Button from 'static/Button';
-import Message from 'components/static/Message';
+export default () => <DonationForm />
 
-class App extends Component {
 
-    render() {
-        const donate = this.props.donate;
-        const message = this.props.message;
-        return (
-            <Main>
-              <AppHeader />
-              <Charities />
-            </Main>
-        )
-    }
-}
 
-export default App;
 
 /* const handlePay = (id, amount, currency) => (
     fetch('http://localhost:3001/payments', 
