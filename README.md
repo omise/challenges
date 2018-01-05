@@ -11,14 +11,20 @@ projects that are very relevant to the tasks you will be working on at Omise.
 * Submission is done via a [git patch](https://git-scm.com/docs/git-format-patch). Attach
   your patch in an e-mail and send it to [jobs@omise.co](mailto:jobs@omise.co).
 
-
 ### Challenges
 
 Pick the one that most suites the position you wish to apply.
 
+**Omise**
+
 * Backend / Ruby on Rails - [tamboon-rails](https://github.com/omise/challenges/tree/challenge-rails)
 * Frontend / React - [tamboon-react](https://github.com/omise/challenges/tree/challenge-react)
 * Mobile App / iOS and Android - [tamboon-mobile](https://github.com/omise/challenges/tree/challenge-mobile)
+
+**Omise GO**
+
+* Backend / Elixir - [omg-elixir-challenge](https://gist.github.com/T-Dnzt/2b6e8d74167e07783a689ba4fe8ef9ff)
+* Frontend / React - [omg-react-challenge](https://gist.github.com/T-Dnzt/71b2fa89ca47c465119bd3d9ed94db29)
 
 ### Free Style Challenge
 
