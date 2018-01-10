@@ -1,5 +1,5 @@
-export const summaryDonations = (donations) => (
-  donations.reduce((accumulator, value) => (accumulator + value))
+export const summaryDonations = (payments) => (
+  payments.reduce((accumulator, value) => (accumulator + value))
 );
 
 export const  getClosest = (arr, val) => ( 

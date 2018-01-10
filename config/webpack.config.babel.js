@@ -2,8 +2,9 @@ import webpack from 'webpack';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
 import paths from './paths';
 
-const config = {
-  entry: './src/index.js',
+export default {
+
+  entry: paths.appIndexJS,
   output: {
     filename: 'js/[name].[chunkhash:8].js',
     chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
@@ -108,5 +109,3 @@ const config = {
     }
   },
 };
-
-module.exports = config;
