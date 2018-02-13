@@ -1,6 +1,3 @@
-# Rule Reference
-# https://github.com/airbnb/javascript
-
 {
   "parser": "babel-eslint",
   "env": {
@@ -31,8 +28,7 @@
     "no-dupe-keys": 1,
     "no-unused-vars": [1, { vars: 'local', args: 'none' }],
     "no-use-before-define": [1, 'nofunc'],
-
-    # ReactJS ESLint Rules
+    
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
     "react/react-in-jsx-scope": 1,

@@ -1,32 +1,37 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import App from './App';
+import React from 'react'
+import { render } from 'react-dom'
 
-const store = createStore(function(state, action) {
-  const _state = state == null ? {
-    donate: 0,
-    message: '',
-  } : state;
+import { createStore, applyMiddleware, compose } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './reducers'
+import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+import { initialState } from './reducers/initialState'
 
-  switch (action.type) {
-    case 'UPDATE_TOTAL_DONATE':
-      return Object.assign({}, _state, {
-        donate: _state.donate + action.amount,
-      });
-    case 'UPDATE_MESSAGE':
-      return Object.assign({}, _state, {
-        message: action.message,
-      });
 
-    default: return _state;
-  }
-});
+import 'config/globalStyle'
+import App from 'components/App'
+
+const logger = createLogger()
+
+const store = createStore(
+  rootReducer,
+  initialState,
+  compose(
+    applyMiddleware(thunk, logger),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
+)
+
+import { loadingPayments, fetchPayments, loadingCharities, fetchCharities } from './reducers/actions';
+
+store.dispatch(loadingCharities());
+store.dispatch(loadingPayments());
+store.dispatch(fetchCharities());
+store.dispatch(fetchPayments());
 
 render(
   <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById('root')
+  </Provider>, document.getElementById('root')
 );
