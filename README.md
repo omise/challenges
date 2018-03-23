@@ -28,7 +28,7 @@ Well, grap your guns, stock up your food and bring down your armor. We gonna nee
   - Amount in all donations should be displayed correctly despite users close and come back later.
   - Database (db.json) should have the new valid data when paid.
 - [ ] Refactor the code to be more readable and enhance reusability.
-- [ ] Use [styled-component](https://www.styled-components.com/) for styling part.
+- [ ] Use only [styled-component](https://www.styled-components.com/) for styling part.
 - [ ] Write a nice commit message and order it well.
 - [ ] Display well in most modern browser (Google Chrome, Safari, Firefox).
 
