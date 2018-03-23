@@ -57,7 +57,7 @@ Desire to win the war? Well, to make it a little more fun, please remember that
 
 
 ## Surprise us!
-Ready to surprise us what you have done? Email your changes as a git patch to jobs@omise.co.  
+Ready to surprise us what you have done? Email your changes as a [git format-patch](https://git-scm.com/docs/git-format-patch) to jobs@omise.co.  
 Please remember that your patch must consist of multiple separate commits. Your commit message must communicate clearly what has been done in each commit.
 
 If you notice more bugs in the original implementation you can add fixes for those as well. You won't be penalized if you don't. However we ask you not to add more features than the one given in the mission list.
