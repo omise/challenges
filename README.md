@@ -8,8 +8,8 @@ projects that are very relevant to the tasks you will be working on at Omise.
 * We prefer well-thought-out solutions over the quick-and-dirty kind. So take your time,
   if you need it. A rushed job is usually matched by a swift rejection.
 * Average completion time so far has been around one to two weeks.
-* Submission is done via a [git patch](https://git-scm.com/docs/git-format-patch). Attach
-  your patch in an e-mail and send it to [jobs@omise.co](mailto:jobs@omise.co).
+* Submission is done via a [git format-patch](https://git-scm.com/docs/git-format-patch). Attach
+  your patches in an e-mail and send it to [jobs@omise.co](mailto:jobs@omise.co).
 
 ### Challenges
 
