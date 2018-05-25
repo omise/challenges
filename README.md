@@ -52,6 +52,7 @@ Desire to win the war? Well, to make it a little more fun, please remember that
 - Add new packages.
 - Update `webpack` config.
 - Take reasonable time to complete the challenge, no need to rush.
+- Edit `README.md` to add documentation. What have you done or how to run or test your app?
 
 
 **Note**: You can see design inside folder `resources`.
