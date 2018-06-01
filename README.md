@@ -42,7 +42,7 @@ Desire to win the war? Well, to make it a little more fun, please remember that
 **You cannot:**
 - Change existing behaviors.
 - Change the API server.
-- Change from JS to other language.
+- Change from JS to other languages.
 
 **In the other hand, feel free to:**
 - Improve the design to have better UI and UX.
