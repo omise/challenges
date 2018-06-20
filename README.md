@@ -23,6 +23,12 @@ Pick the one that most suites the position you wish to apply.
 * Mobile App / iOS and Android - [tamboon-mobile](https://github.com/omise/challenges/tree/challenge-mobile)
 * Design / UX - [design-challenge](https://github.com/omise/challenges/blob/challenge-design/design-challenge.pdf)
 
+**Trading Exchange**
+
+* Backend / Elixir [exchange-challenge](https://gist.github.com/theesit-omise/26abab54487996d9702535421b459858)
+* Frontend / React - [tamboon-react](https://github.com/omise/challenges/tree/challenge-react)
+* Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
+
 **OmiseGO**
 
 * Backend / Elixir - [omg-elixir-challenge](https://gist.github.com/T-Dnzt/2b6e8d74167e07783a689ba4fe8ef9ff)
