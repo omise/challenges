@@ -13,10 +13,13 @@ class ActiveSupport::TestCase
 
   def sign_in_user(email, password)
     get new_user_session_path
-    post_via_redirect user_session_path, user: {
-      email: email,
-      password: password
-    }
+    post(user_session_path, params: {
+           user: {
+             email: email,
+             password: password
+           }
+         })
+    follow_redirect!
   end
 
   def assert_follow_link(path)
