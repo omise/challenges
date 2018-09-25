@@ -23,3 +23,7 @@ group :development do
   gem 'guard-rails', require: false
   gem 'guard-minitest', require: false
 end
+
+group :test do
+  gem 'rails-controller-testing'
+end

@@ -33,10 +33,13 @@ class Admin::CharitiesTest < ActionDispatch::IntegrationTest
     get new_admin_charity_path
 
     assert_difference "@_app.count_charities" do
-      post_via_redirect(admin_charities_path, charity: {
-        name: "Elephant Nature Park",
-        description: "A charity that helps elephants go back to the wild.",
-      })
+      post(admin_charities_path, params: {
+             charity: {
+               name: "Elephant Nature Park",
+               description: "A charity that helps elephants go back to the wild.",
+             }
+           })
+      follow_redirect!
     end
 
     charity = @_app.all_charities.last
@@ -51,7 +54,9 @@ class Admin::CharitiesTest < ActionDispatch::IntegrationTest
     get new_admin_charity_path
 
     assert_no_difference "@_app.count_charities" do
-      post_via_redirect admin_charities_path, charity: { name: "" }
+      post(admin_charities_path, params: {
+             charity: { name: "" }
+           })
     end
 
     assert_equal t("admin.charities.create.failure"), flash.alert
@@ -62,7 +67,10 @@ class Admin::CharitiesTest < ActionDispatch::IntegrationTest
     get new_admin_charity_path
 
     assert_difference "@_app.count_charities" do
-      post_via_redirect admin_charities_path, charity: { name: "Elephant Nature Park", total: 1000 }
+      post(admin_charities_path, params: {
+             charity: { name: "Elephant Nature Park", total: 1000 }
+           })
+      follow_redirect!
     end
 
     assert_equal t("admin.charities.create.success"), flash.notice

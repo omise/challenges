@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class WebsiteTest < ActionDispatch::IntegrationTest
   test "should get index" do
@@ -8,7 +8,9 @@ class WebsiteTest < ActionDispatch::IntegrationTest
   end
 
   test "that someone can't donate to no charity" do
-    post donate_path, amount: "100", omise_token: "tokn_X", charity: ""
+    post(donate_path, params: {
+           amount: "100", omise_token: "tokn_X", charity: ""
+         })
 
     assert_template :index
     assert_equal t("website.donate.failure"), flash.now[:alert]
@@ -16,7 +18,9 @@ class WebsiteTest < ActionDispatch::IntegrationTest
 
   test "that someone can't donate 0 to a charity" do
     charity = charities(:children)
-    post donate_path, amount: "0", omise_token: "tokn_X", charity: charity.id
+    post(donate_path, params: {
+           amount: "0", omise_token: "tokn_X", charity: charity.id
+         })
 
     assert_template :index
     assert_equal t("website.donate.failure"), flash.now[:alert]
@@ -24,7 +28,9 @@ class WebsiteTest < ActionDispatch::IntegrationTest
 
   test "that someone can't donate less than 20 to a charity" do
     charity = charities(:children)
-    post donate_path, amount: "19", omise_token: "tokn_X", charity: charity.id
+    post(donate_path, params: {
+           amount: "19", omise_token: "tokn_X", charity: charity.id
+         })
 
     assert_template :index
     assert_equal t("website.donate.failure"), flash.now[:alert]
@@ -32,7 +38,9 @@ class WebsiteTest < ActionDispatch::IntegrationTest
 
   test "that someone can't donate without a token" do
     charity = charities(:children)
-    post donate_path, amount: "100", charity: charity.id
+    post(donate_path, params: {
+           amount: "100", charity: charity.id
+         })
 
     assert_template :index
     assert_equal t("website.donate.failure"), flash.now[:alert]
@@ -43,7 +51,10 @@ class WebsiteTest < ActionDispatch::IntegrationTest
     initial_total = charity.total
     expected_total = initial_total + (100 * 100)
 
-    post_via_redirect donate_path, amount: "100", omise_token: "tokn_X", charity: charity.id
+    post(donate_path, params: {
+           amount: "100", omise_token: "tokn_X", charity: charity.id
+         })
+    follow_redirect!
 
     assert_template :index
     assert_equal t("website.donate.success"), flash[:notice]
@@ -54,7 +65,9 @@ class WebsiteTest < ActionDispatch::IntegrationTest
     charity = charities(:children)
 
     # 999 is used to set paid as false
-    post donate_path, amount: "999", omise_token: "tokn_X", charity: charity.id
+    post(donate_path, params: {
+           amount: "999", omise_token: "tokn_X", charity: charity.id
+         })
 
     assert_template :index
     assert_equal t("website.donate.failure"), flash.now[:alert]
@@ -65,7 +78,9 @@ class WebsiteTest < ActionDispatch::IntegrationTest
     initial_total = charities.to_a.sum(&:total)
     expected_total = initial_total + (100 * 100)
 
-    post donate_path, amount: "100", omise_token: "tokn_X", charity: "random"
+    post(donate_path, params: {
+           amount: "100", omise_token: "tokn_X", charity: "random"
+         })
 
     assert_template :index
     assert_equal expected_total, charities.to_a.map(&:reload).sum(&:total)
