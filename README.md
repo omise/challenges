@@ -1,41 +1,47 @@
-# Omise Code Challenges
+Context
+=======
 
-This repository houses Omise's interviewing code challenges. These are small hands-on
-projects that are very relevant to the tasks you will be working on at Omise.
+We have outsourcing a portal application development to external company. The application contains the following features:
 
-### Ground Rules
+ - Member sign up/sign in
+ - Download document
 
-* We prefer well-thought-out solutions over the quick-and-dirty kind. So take your time,
-  if you need it. A rushed job is usually matched by a swift rejection.
-* Average completion time so far has been around one to two weeks.
-* Submission is done via a [git format-patch](https://git-scm.com/docs/git-format-patch). Attach
-  your patches in an e-mail and send it to [jobs@omise.co](mailto:jobs@omise.co).
+The application was developed using Ruby on Rails.
 
-### Challenges
+The application requires a database for storing data. 
 
-Pick the one that most suites the position you wish to apply.
+The default database in Rails is Sqlite, but needs to be changed to PostgreSQL.
 
-**Omise**
+Problem
+=======
 
-* Backend / Ruby on Rails - [tamboon-rails](https://github.com/omise/challenges/tree/challenge-rails)
-* Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
-* Frontend / React - [tamboon-react](https://github.com/omise/challenges/tree/challenge-react)
-* Mobile App / iOS and Android - [tamboon-mobile](https://github.com/omise/challenges/tree/challenge-mobile)
-* Design / UX - [design-challenge](https://github.com/omise/challenges/blob/challenge-design/design-challenge.pdf)
+As an architect, you decide to deploy the application on containers. The target platform is Kubernetes.
+And, we decide to use PostgreSQL as the database.
 
-**Trading Exchange**
+Instructions
+===========
 
-* Backend / Elixir [exchange-challenge](https://gist.github.com/theesit-omise/26abab54487996d9702535421b459858)
-* Frontend / React - [tamboon-react](https://github.com/omise/challenges/tree/challenge-react)
-* Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
+ - Write scripts and yaml files, in order to bring this application to Kubernetes cluster, i.e. Helm charts or Kubernetes manifest file.
+ - Write scripts and yaml files, in order to setup PostgreSQL on Kubernetes cluster, optionally in High Availability mode, i.e. Patroni/Spilo with master/slave.
+ - You may need to modify the application source code or configuration in order to make the application running on Kubernetes cluster, i.e. make use ENV variables in 12Factor style, create Dockerfile.
+ - You have to write documents and/or instructions about what you have done. This documents must tell the detail step by step for other DevOps to understand how to deploy this application and maintain it.
 
-**OmiseGO**
+How to proceed
+===========
 
-* Backend / Elixir - [omg-elixir-challenge](https://gist.github.com/T-Dnzt/2b6e8d74167e07783a689ba4fe8ef9ff)
-* Frontend / React - [omg-react-challenge](https://gist.github.com/T-Dnzt/71b2fa89ca47c465119bd3d9ed94db29)
-* Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
+1) Clone this repository to your local machine or to a private repo.
+2) Write your code.
+3) Write the documentation.
+4) Submit your patch file to devops@omise.co
+5) Do not make your code public.
 
-### Free Style Challenge
+Time limit
+===========
 
-If you feel that none of the challenges are sufficient to demonstrate your coding ability,
-you can also choose to submit any project of your own choosing that you are most proud of.
+There is no time limit as long as the positions are not filled.
+
+Final step
+===========
+
+If you have qualified, we will interview you personally.
+We may ask you more details of your code choices.
