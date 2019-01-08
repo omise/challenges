@@ -22,6 +22,7 @@ Pick the one that most suites the position you wish to apply.
 * Frontend / React - [tamboon-react](https://github.com/omise/challenges/tree/challenge-react)
 * Mobile App / iOS and Android - [tamboon-mobile](https://github.com/omise/challenges/tree/challenge-mobile)
 * Design / UX - [design-challenge](https://github.com/omise/challenges/blob/challenge-design/design-challenge.pdf)
+* Devops / K8s - [devops-challenge](https://github.com/omise/challenges/tree/challenge-devops)
 
 **Trading Exchange**
 
