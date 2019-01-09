@@ -27,7 +27,7 @@ Pick the one that most suites the position you wish to apply.
 **Trading Exchange**
 
 * Backend / Elixir [exchange-challenge](https://gist.github.com/theesit-omise/26abab54487996d9702535421b459858)
-* Frontend / React - [tamboon-react](https://github.com/omise/challenges/tree/challenge-react)
+* Frontend / React - [tamboon-react](https://github.com/theesit-omise/challenges/tree/challenge-react)
 * Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
 
 **OmiseGO**
