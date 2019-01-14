@@ -35,8 +35,3 @@ Pick the one that most suites the position you wish to apply.
 * Backend / Elixir - [omg-elixir-challenge](https://gist.github.com/T-Dnzt/2b6e8d74167e07783a689ba4fe8ef9ff)
 * Frontend / React - [omg-react-challenge](https://gist.github.com/T-Dnzt/71b2fa89ca47c465119bd3d9ed94db29)
 * Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
-
-### Free Style Challenge
-
-If you feel that none of the challenges are sufficient to demonstrate your coding ability,
-you can also choose to submit any project of your own choosing that you are most proud of.
