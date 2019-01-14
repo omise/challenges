@@ -82,13 +82,6 @@ You can't:
   - change the database from PostgreSQL to something else;
   - change any of the urls or parameter names.
 
-## Submitting Your Code
-
-You must email your changes as a git patch to jobs@omise.co. Your patch must
-consist of multiple separate commits, per exercise. Your commit
-message must communicate clearly what has been done in each commit. Have a look
-at previous commits to have a clear idea of what we expect.
-
 If you notice more bugs in the original implementation you can add fixes for
 those as well. You won't be penalized if you don't. However we ask you not
 to add more features than the one given in the exercise list.
