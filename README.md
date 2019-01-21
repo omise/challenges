@@ -1,15 +1,22 @@
+Ground Rules
+=======
+
+* We prefer well-thought-out solutions over the quick-and-dirty kind. So take your time, if you need it. A rushed job is usually matched by a swift rejection.
+* Submission is done via a [git format-patch](https://git-scm.com/docs/git-format-patch). Send your patch to devops@omise.co 
+
+
 Context
 =======
-We have outsourcing a portal application development to external company. The application contains the following features:
+We have outsourced this application development to an external company. The application contains the following features:
 
  - Member sign up/sign in
- - Download document
+ - Download documents
 
 The application was developed using Ruby on Rails.
 
 The application requires a database for storing data. 
 
-The default database in Rails is Sqlite, but needs to be changed to PostgreSQL.
+The default database in Rails is Sqlite, but needs to be changed to PostgreSQL, and support HA (high availability).
 
 Problem
 =======
@@ -29,7 +36,7 @@ How to proceed
 1) Clone this repository to your local machine or fork to a private repository.
 2) Write the code.
 3) Write the documentation.
-4) Submit your patch file to devops@omise.co.
+4) Submit your **patch file** to devops@omise.co
 
 Time limit
 ===========
