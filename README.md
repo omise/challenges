@@ -45,11 +45,11 @@ Column 3
 |payment01      |CPF                   |
 |payment02      |OTH                   |
 |payment03      |OTH                   |
-|payment04      |CPF                   |
+|payment04      |OTH                   |
 
 Column 4
 - transaction_type
-  - f the value in "payment_method" is `payment01`, use the table below to get transaction type code based on the combination of the values in "card_type", "card_country_issuer_code" and "card_brand"
+  - If the value in "payment_method" is `payment01`, use the table below to get transaction type code based on the combination of the values in "card_type", "card_country_issuer_code" and "card_brand"
   - `A029` in "card_country_issuer_code" column indicates its country code is "Local", the other values indicate "Inter".
   - If the value in either "card_type", "card_brand" or "card_country_issuer_code" is missing, use transaction type code `099999`.
   
