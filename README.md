@@ -6,9 +6,9 @@ projects that are very relevant to the tasks you will be working on at us.
 ### Ground Rules
 
 * We prefer well-thought-out solutions over the quick-and-dirty kind. So take your time,
-  if you need it. A rushed job is usually matched by a swift rejection.
-* Average completion time so far has been around one to two weeks.
-* Submission is done via a [git format-patch](https://git-scm.com/docs/git-format-patch).
+  if you need it 
+* Average completion time so far has been around one to two weeks
+* Submission is done via a [git format-patch](https://git-scm.com/docs/git-format-patch)
   Send your patch to the hiring team.
 
 ### What to expect
