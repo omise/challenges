@@ -1,4 +1,4 @@
-# Omise Code Challenges
+# Omise, OmiseGO & GO.Exchange Code Challenges
 
 This repository houses the code challenges for Omise, OmiseGO & GO.Exchange. These are small hands-on
 projects that are very relevant to the tasks you will be working on at us.
