@@ -55,6 +55,8 @@ Pick the one that most suites the position you wish to apply.
 ### Have fun and we look forward to your submission!
   
 
-<stong>
+<big>
 ᕙ(⇀‸↼‶)ᕗ
-</strong>
+</big>
+  
+
