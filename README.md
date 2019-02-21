@@ -52,4 +52,7 @@ Pick the one that most suites the position you wish to apply.
 * Backend / Go - [omisego-challenge](https://github.com/omise/challenges/tree/challenge-go)
 * Devops / Kubernetes [challenge-devops](https://github.com/omise/challenges/tree/challenge-devops)
 
-#### Have fun and we look forward to your submission!
+### Have fun and we look forward to your submission!
+<stong>
+ᕙ(⇀‸↼‶)ᕗ
+</strong>
