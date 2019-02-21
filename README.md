@@ -21,7 +21,7 @@ Rather than a complex solution, which added a million features and is written in
 * **Defensiveness:** You can cover edge cases and treat user inputs with care
 
 ### What happens after your submission
-Once you have submitted your solution by sending us the *git-format-patch*, our Engineers will review the code. Due to the number of submission we recieve, and time-intensive review process, it might take us **1 week** to give you feedback on the submission. Based on the feedback, we will invite you for a meeting to talk more about your submission and continue the recruitment process.
+Once you have submitted your solution by sending us the **git-format-patch**, our Engineers will review the code. Due to the number of submission we recieve, and time-intensive review process, it might take us **1 week** to give you feedback on the submission. Based on the feedback, we will invite you for a meeting to talk more about your submission and continue the recruitment process.
 
 ### Challenges
 
@@ -52,4 +52,4 @@ Pick the one that most suites the position you wish to apply.
 * Backend / Go - [omisego-challenge](https://github.com/omise/challenges/tree/challenge-go)
 * Devops / Kubernetes [challenge-devops](https://github.com/omise/challenges/tree/challenge-devops)
 
-**Have fun and we look forward to your submission!**
+#### Have fun and we look forward to your submission!
