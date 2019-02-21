@@ -35,7 +35,7 @@ Pick the one that most suites the position you wish to apply.
 
 **OmiseGO**
 
-* Backend / Elixir - [omg-elixir-challenge](https://gist.github.com/T-Dnzt/2b6e8d74167e07783a689ba4fe8ef9ff)
+* Backend / Elixir - [omg-elixir-challenge](https://gist.github.com/T-Dnzt/73813aa982d060d87e64e52cd9543799)
 * Frontend / React - [omg-react-challenge](https://gist.github.com/T-Dnzt/71b2fa89ca47c465119bd3d9ed94db29)
 * Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
 * Devops / Kubernetes [challenge-devops](https://github.com/omise/challenges/tree/challenge-devops)
