@@ -81,6 +81,7 @@ class WebsiteTest < ActionDispatch::IntegrationTest
     post(donate_path, params: {
            amount: "100", omise_token: "tokn_X", charity: "random"
          })
+    follow_redirect!
 
     assert_template :index
     assert_equal expected_total, charities.to_a.map(&:reload).sum(&:total)
