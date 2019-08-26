@@ -13,7 +13,7 @@ class WebsiteTest < ActionDispatch::IntegrationTest
          })
 
     assert_template :index
-    assert_equal t("website.donate.failure"), flash.now[:alert]
+    assert_equal t("website.donate.failure.charity_not_found"), flash.now[:alert]
   end
 
   test "that someone can't donate 0 to a charity" do
@@ -23,7 +23,7 @@ class WebsiteTest < ActionDispatch::IntegrationTest
          })
 
     assert_template :index
-    assert_equal t("website.donate.failure"), flash.now[:alert]
+    assert_equal t("website.donate.failure.amount"), flash.now[:alert]
   end
 
   test "that someone can't donate less than 20 to a charity" do
@@ -33,7 +33,7 @@ class WebsiteTest < ActionDispatch::IntegrationTest
          })
 
     assert_template :index
-    assert_equal t("website.donate.failure"), flash.now[:alert]
+    assert_equal t("website.donate.failure.amount"), flash.now[:alert]
   end
 
   test "that someone can't donate without a token" do
@@ -43,21 +43,22 @@ class WebsiteTest < ActionDispatch::IntegrationTest
          })
 
     assert_template :index
-    assert_equal t("website.donate.failure"), flash.now[:alert]
+    assert_equal t("website.donate.failure.general"), flash.now[:alert]
   end
 
   test "that someone can donate to a charity" do
     charity = charities(:children)
     initial_total = charity.total
-    expected_total = initial_total + (100 * 100)
+    amount = 100.0
+    expected_total = initial_total + amount * 100
 
     post(donate_path, params: {
-           amount: "100", omise_token: "tokn_X", charity: charity.id
+           amount: amount, omise_token: "tokn_X", charity: charity.id
          })
     follow_redirect!
 
     assert_template :index
-    assert_equal t("website.donate.success"), flash[:notice]
+    assert_equal t("website.donate.success", { amount: amount * 100, charity_name: charity.name }), flash[:notice]
     assert_equal expected_total, charity.reload.total
   end
 
@@ -70,36 +71,32 @@ class WebsiteTest < ActionDispatch::IntegrationTest
          })
 
     assert_template :index
-    assert_equal t("website.donate.failure"), flash.now[:alert]
+    assert_equal t("website.donate.failure.general"), flash.now[:alert]
   end
 
   test "that we can donate to a charity at random" do
-    charities = Charity.all
-    initial_total = charities.to_a.sum(&:total)
-    expected_total = initial_total + (100 * 100)
-
     post(donate_path, params: {
-           amount: "100", omise_token: "tokn_X", charity: charities.pluck(:id).sample
+           amount: "100", omise_token: "tokn_X", charity: 'donate_any'
          })
     follow_redirect!
 
     assert_template :index
-    assert_equal expected_total, charities.to_a.map(&:reload).sum(&:total)
-    assert_equal t("website.donate.success"), flash[:notice]
+    assert_equal true, flash[:notice].include?("Success, you've donated")
   end
 
   test 'that someone can donate amount with subparts to a charity' do
     charity = charities(:children)
     initial_total = charity.total
-    expected_total = initial_total + (100.5445 * 100)
+    amount = 100.5445
+    expected_total = initial_total + amount * 100
 
     post(donate_path, params: {
-           amount: "100.5445", omise_token: "tokn_X", charity: charity.id
+           amount: amount, omise_token: "tokn_X", charity: charity.id
          })
     follow_redirect!
 
     assert_template :index
-    assert_equal t("website.donate.success"), flash[:notice]
+    assert_equal t("website.donate.success", { amount: amount * 100, charity_name: charity.name }), flash[:notice]
     assert_equal expected_total, charity.reload.total
   end
 end

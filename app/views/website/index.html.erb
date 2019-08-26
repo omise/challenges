@@ -9,6 +9,10 @@
         <%= label_tag "charity_#{charity.id}", charity.name %>
       </li>
     <% end %>
+    <li>
+      <%= radio_button_tag :charity, 'donate_any' %>
+        <%= label_tag "charity_donate_any", 'Donate Any Needful Charity' %>
+    </li>
   </ul>
 
   <div>
