@@ -8,6 +8,13 @@ class CharityTest < ActiveSupport::TestCase
     assert_equal 10000, charity.total
   end
 
+  test "that we can credit a charity some money with subparts" do
+    charity = charities(:children)
+    charity.credit_amount(10000.1225)
+
+    assert_equal 10000.1225, charity.reload.total
+  end
+
   # FIXME There's a race condition in the credit_amount method
   test "that a charity total balance is correct even if credited from two different ruby objects" do
     charity = charities(:children)

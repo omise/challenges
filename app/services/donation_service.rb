@@ -3,7 +3,7 @@ class DonationService
 
 	def initialize(charity, amount, omise_token)
 		@charity = charity
-		@amount = amount.to_i
+		@amount = amount.to_f
 		@omise_token = omise_token
 	end
 
