@@ -12,7 +12,7 @@ en:
   website:
     donate:
       link: "Donate"
-      success: "Success, you've donated %{amount} to %{charity_name}."
+      success: "Success, you've donated %{amount} satang to %{charity_name}."
       failure:
         general: "It seems like this didn't work so well. Try again maybe?"
         charity_not_found: "It seems like the charity you want to donate to does not exist"

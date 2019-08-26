@@ -26,4 +26,16 @@ class ActiveSupport::TestCase
     assert_select "a[href='#{path}']"
     get path
   end
+
+  def get_test_omise_token
+    card = {
+      name: 'Test',
+      number: '4242424242424242',
+      expiration_month: '12',
+      expiration_year: Time.current.year + 1,
+      security_code: '123'
+    }
+
+    @omise_token ||= Omise::Token.create(card: card).id
+  end
 end

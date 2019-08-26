@@ -11,6 +11,7 @@ $(document).on("ready", function () {
     form.find("input[type=submit]").prop("disabled", true);
 
     // Serialize the form fields into a valid card object.
+
     var card = {
       "name": form.find("[data-omise=holder_name]").val(),
       "number": form.find("[data-omise=number]").val(),
