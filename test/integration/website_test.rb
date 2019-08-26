@@ -3,6 +3,7 @@ require "test_helper"
 class WebsiteTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get "/"
+
     assert_response :success
   end
 
@@ -65,7 +66,7 @@ class WebsiteTest < ActionDispatch::IntegrationTest
     charity = charities(:children)
 
     post(donate_path, params: {
-           amount: "999", omise_token: 'tokn_X', charity: charity.id
+           amount: "999", omise_token: "tokn_X", charity: charity.id
          })
 
     assert_template :index
@@ -79,7 +80,7 @@ class WebsiteTest < ActionDispatch::IntegrationTest
     follow_redirect!
 
     assert_template :index
-    assert_equal true, flash[:notice].include?("Success, you've donated")
+    assert_equal true, flash[:notice].include?("Success, you've donated #{100 * 100} satang")
   end
 
   test 'that someone can donate amount with subparts to a charity' do

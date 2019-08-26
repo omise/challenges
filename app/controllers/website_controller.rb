@@ -1,5 +1,5 @@
 class WebsiteController < ApplicationController
-  before_action :check_omise_token, :load_charity, :validate_amount, :make_donation, only: :donate
+  before_action :check_omise_token, :fetch_charity, :validate_amount, :make_donation, only: :donate
 
   def index
     @token = nil
@@ -20,9 +20,10 @@ class WebsiteController < ApplicationController
     Omise::Token.retrieve(token) rescue nil
   end
 
-  def load_charity
+  def fetch_charity
     @charity = if params[:charity].eql?('donate_any')
-      Charity.all.sample
+      offset = rand Charity.count
+      Charity.offset(offset).first
     else
       Charity.find_by(id: params[:charity])
     end
@@ -35,7 +36,7 @@ class WebsiteController < ApplicationController
   end
 
   def validate_amount
-    render_failure(t(".failure.amount")) if params[:amount].blank? || params[:amount].to_i <= 20
+    render_failure(t(".failure.amount")) if params[:amount].blank? || params[:amount].to_f <= 20
   end
 
   def make_donation

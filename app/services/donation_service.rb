@@ -1,23 +1,23 @@
 class DonationService
   attr_reader :charity, :amount, :omise_token, :charge
 
-  def initialize(charity, amount, omise_token)
+  def initialize(charity, amount_in_thb, omise_token)
     @charity = charity
-    @amount = amount.to_f
+    @amount = amount_in_thb.to_f * 100
     @omise_token = omise_token
   end
 
   def make
     @charge = begin
       Omise::Charge.create({
-        amount: amount * 100,
+        amount: amount,
         currency: "THB",
         card: omise_token,
         description: "Donation to #{charity.name} [#{charity.id}]",
       })
     rescue Omise::Error => e
       OpenStruct.new({
-        amount: amount * 100,
+        amount: amount,
         paid: false,
         error: e.message
       })
