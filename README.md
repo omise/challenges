@@ -58,6 +58,7 @@ Pick the one that most suites the position you wish to apply.
 * Frontend / React - [tamboon-react](https://github.com/theesit-omise/challenges/tree/challenge-react)
 * Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
 * Devops / Kubernetes [challenge-devops](https://github.com/omise/challenges/tree/challenge-devops)
+* Data Engineer [code-challenge](https://github.com/omise/challenges/tree/challenge-goex-data-engineer)
 
 **OmiseGO**
 
