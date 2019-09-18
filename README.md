@@ -1,75 +1,143 @@
-# Omise, OmiseGO & GO.Exchange Code Challenges
+# User Daily reports
 
-This repository houses the code challenges for Omise, OmiseGO & GO.Exchange. These are
-small hands-on projects that are very relevant to the tasks you will be working on here.
-
-### Ground Rules
-
-* We prefer well-thought-out solutions over the quick-and-dirty kind. So take your time,
-  if you need it 
-* Average completion time so far has been around one to two weeks
-* Submission is done via a [git format-patch](https://git-scm.com/docs/git-format-patch)
-  Send your patch to the hiring team.
-
-### What to expect
-
-We do understand that our code challenges are time intensive and not always easy to
-execute. We do recognize and value the time and effort applicants put into their
-submission. Our Code Challenges reflect some of the tasks and skills you'd need while
-working with us. We believe that these *take-home* challenges will give you a deeper
-understanding of our product, what you'd be working on in the future and what level of
-commitment we look for in applicants.
-
-### What we look for
-
-Rather than a complex solution, which added a million features and is written in 10,000
-lines of code, we look for:
-
-* **Clarity:** You can write clear code that any devs could read and understand in one go
-* **Simplicity:** You can write gimmick-free and straightforward code with no ambiguities
-* **Defensiveness:** You can cover edge cases and treat user inputs with care
-
-### What happens after your submission
-
-Once you have submitted your solution by sending us the **git-format-patch**, our
-Engineers will review the code. Due to the number of submissions we receive, and
-time-intensive review process, it might take us **1 week** to give you feedback on the
-submission. Based on the feedback, we will invite you for a meeting to talk more about
-your submission and continue the recruitment process.
-
-### Challenges
-
-Pick the one that most suites the position you wish to apply.
-
-**Omise**
-
-* Backend / Ruby on Rails - [tamboon-rails](https://github.com/omise/challenges/tree/challenge-rails)
-* Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
-* Devops / Kubernetes [challenge-devops](https://github.com/omise/challenges/tree/challenge-devops)
-* Frontend / React - [tamboon-react](https://github.com/omise/challenges/tree/challenge-react)
-* Mobile App / iOS and Android - [tamboon-mobile](https://github.com/omise/challenges/tree/challenge-mobile)
-* Design / UX - [design-challenge](https://github.com/omise/challenges/blob/challenge-design/design-challenge.pdf)
-* Devops / K8s - [devops-challenge](https://github.com/omise/challenges/tree/challenge-devops)
-* Data Engineer [code-challenge](https://github.com/omise/challenges/tree/challenge-data-engineer)
-
-**GO.Exchange**
-
-* Backend / Elixir [exchange-challenge](https://gist.github.com/theesit-omise/26abab54487996d9702535421b459858)
-* Frontend / React - [tamboon-react](https://github.com/theesit-omise/challenges/tree/challenge-react)
-* Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
-* Devops / Kubernetes [challenge-devops](https://github.com/omise/challenges/tree/challenge-devops)
-
-**OmiseGO**
-
-* Backend / Elixir - [omisego-elixir-challenge](https://gist.github.com/T-Dnzt/73813aa982d060d87e64e52cd9543799)
-* Frontend / React - [omisego-react-challenge](https://gist.github.com/T-Dnzt/71b2fa89ca47c465119bd3d9ed94db29)
-* Backend / Go - [omisego-challenge](https://github.com/omise/challenges/tree/challenge-go)
-* Devops / Kubernetes [challenge-devops](https://github.com/omise/challenges/tree/challenge-devops)
-
-### Have fun and we look forward to your submission!
+Acme Exchange(Acme for short) is a cryptocurrency exchange company, we provide a platform for user to trade cryptocurrencies. 
 
 
-<h2>
-ᕙ(⇀‸↼‶)ᕗ
-</h2>
+Acme analyses users’ trading info and wants two reports delivered every day:
+
+1. Historical users’ trades.
+
+2. User summary report aggregating the above report, which contains date, user id, and amount in usd.
+
+Help Acme creating these reports. Business requirements are followed.
+
+## Business requirements
+
+### Historical user trades
+
+A CSV file for each day of trade.
+
+| Column | Name                 | Type      | Note                      |
+|--------|----------------------|-----------|---------------------------|
+| 1      | trade_id             | integer   |                           |
+| 2      | side                 | string    | buy or sell               |
+| 3      | user_id              | integer   |                           |
+| 4      | amount               | float     | use six decimal points    |
+| 5      | amount_currency      | string    |                           |
+| 6      | trade_inserted_at    | timestamp |                           |
+| 7      | rate_inserted_at    | timestamp |                           |
+| 8      | usd_rate             | float     | from price_conversion.csv |
+| 9      | amount_usd           | float     | use six decimal points    |
+| 10     | cumsum_amount_usd    | float     | use six decimal points    |
+| 11     | high_amount_usd_flag | boolean   |                           |
+
+Column 1
+
+* trade_id
+  * id column in data.csv
+
+Column 2
+
+* side
+  * side column in data.csv
+
+Column 3
+
+* user_id
+  * user_id column in data.csv
+
+Column 4
+
+* amount
+  * amount column in data.csv
+
+Column 5
+
+* amount_currency
+  * amount_currency column in data.csv
+
+Column 6
+
+* trade_inserted_at
+  * inserted_at column in data.csv
+
+Column 7
+
+* rate_inserted_at
+  * inserted_at column in currency_conversion.csv
+
+Column 8
+
+* usd_rate
+  * usd_rate column in currency_conversion.csv
+
+Column 9
+
+* amount_usd
+  * amount * usd_rate (Column 8 x Column 9)
+  * Conditions to join data.csv and currency_conversion.csv files
+    * amount_currency column in data.csv and symbol column in currency_conversion.csv
+    * inserted_at column in data.csv and inserted_at column in currency_conversion.csv
+    * timestamps in currency_conversion.csv are recorded every hour. You need to round timestamps in inserted_at column in data.csv first.
+  
+
+Column 10
+
+* cumsum_amount_usd
+  * Cumulative sum of amount_usd based on the order of the records.
+  * The records should be sorted by trade id, side, user id.
+
+Column 11
+
+* high_amount_usd_flag
+  * Set to `True` if `cumsum_amount_usd` is over `20000`.
+
+  
+
+### User summary report
+
+A CSV file that summarize the first report.
+
+| Column | Name       | Type    | Note                   |
+|--------|------------|---------|------------------------|
+| 1      | date       | date    | format YYYY-MM-DD      |
+| 2      | user_id    | integer |                        |
+| 3      | amount_usd | float   | use six decimal points |
+
+
+Column 1
+
+* date
+  * date of user trade from inserted_at column in data.csv
+  
+Column 2
+
+* user_id
+  * id of user who made trades
+  
+Column 3
+
+* amount_usd
+  * total amount of each user per day in USD.
+  
+  
+## CSV output requirements:
+
+### Historical user trades
+
+- file name shall be `HIST_TRADES_YYYYMMMDD.csv`
+- YYYYMMDD is the trade date. One CSV file is correspond to one trade date.
+- the file should be sorted by trade id, side, user id.
+
+### User summary report
+
+- file name shall be `USER_DAILY_YYYYMMMDD.csv`
+- YYYYMMDD is the trade date. One CSV file is correspond to one trade date.
+
+## Technical requirements
+
+-  Use Apache Spark(Python) or [Apache Beam](https://beam.apache.org/) frameworks.
+-  Include a README file that explains how we can deploy your code.
+-  Include results in CSV files from processing given data.
+
 
