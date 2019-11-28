@@ -26,8 +26,8 @@ and `skey` fields in `config/secrets.yml` to use the app in development
 mode.
 
 To run the test simply run `rake test`. You'll notice that two tests already
-fail. You'll have to fix or add code (without changing the test) to make
-the tests pass.
+fail. You'll have to fix or add code (without changing these two tests) to make
+them pass.
 
 ## Exercises
 
