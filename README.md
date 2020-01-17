@@ -1,21 +1,22 @@
-# User Daily reports
-
-Acme Exchange(Acme for short) is a cryptocurrency exchange company, we provide a platform for user to trade cryptocurrencies. 
+Top Exchange is a cryptocurrency exchange company, that provides a platform for users to trade cryptocurrencies. 
 
 
-Acme analyses users’ trading info and wants two reports delivered every day:
+Top's management team analyses users’ trading info and wants the following two reports delivered every day:
 
-1. Historical users’ trades.
-
+1. Historical users’ trades
 2. User summary report aggregating the above report, which contains date, user id, and amount in usd.
 
-Help Acme creating these reports. Business requirements are followed.
+
+Your mission should you choose to accept it is as follows:
+    Assist Top Exchange in creating the above 2 reports.
+
+
 
 ## Business requirements
 
-### Historical user trades
+### 1. Historical users’ trades
 
-A CSV file for each day of trade.
+Code that produces a CSV file for each day of trade with the following.
 
 | Column | Name                 | Type      | Note                      |
 |--------|----------------------|-----------|---------------------------|
@@ -92,11 +93,26 @@ Column 11
 * high_amount_usd_flag
   * Set to `True` if `cumsum_amount_usd` is over `20000`.
 
+
+## CSV output requirements: - Historical users’ trades
+- file name shall be `HIST_TRADES_YYYYMMMDD.csv`
+- YYYYMMDD is the trade date. One CSV file is correspond to one trade date.
+- the file should be sorted by trade id, side, user id.
+
   
 
-### User summary report
 
-A CSV file that summarize the first report.
+
+
+
+
+
+
+
+### 2. User summary report aggregating the above report, which contains date, user id, and amount in usd.
+
+
+Code that produces a CSV file that summarize the above report.
 
 | Column | Name       | Type    | Note                   |
 |--------|------------|---------|------------------------|
@@ -120,21 +136,14 @@ Column 3
 * amount_usd
   * total amount of each user per day in USD.
   
-  
-## CSV output requirements:
 
-### Historical user trades
-
-- file name shall be `HIST_TRADES_YYYYMMMDD.csv`
-- YYYYMMDD is the trade date. One CSV file is correspond to one trade date.
-- the file should be sorted by trade id, side, user id.
-
-### User summary report
-
+## CSV output requirements: -User summary report aggregating the above report, which contains date, user id, and amount in usd.
 - file name shall be `USER_DAILY_YYYYMMMDD.csv`
 - YYYYMMDD is the trade date. One CSV file is correspond to one trade date.
 
-## Technical requirements
+
+
+## Technical requirements (Overall)
 
 -  Use Apache Spark(Python) or [Apache Beam](https://beam.apache.org/) frameworks.
 -  Include a README file that explains how we can deploy your code.
