@@ -138,6 +138,8 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     rack (2.0.5)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -242,6 +244,8 @@ DEPENDENCIES
   money
   omise
   pg (~> 1.0.0)
+  pry
+  pry-rails
   rails (= 5.2.0)
   rails-controller-testing
   sass-rails (~> 5.0.7)

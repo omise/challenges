@@ -19,7 +19,9 @@ class CharityTest < ActiveSupport::TestCase
     threads   = Array.new(conns) do |i|
       ActiveRecord::Base.connection_pool.with_connection do
         Thread.new do
-          charity.credit_amount(1000)
+          charity.with_lock do
+            charity.credit_amount(1000)
+          end
         end
       end
     end
