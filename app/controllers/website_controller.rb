@@ -25,10 +25,25 @@ class WebsiteController < ApplicationController
             charity.credit_amount(charge.amount)
           end
         else
-          @token = retrieve_token(params[:omise_token])
-          flash.now.alert = t(".failure")
-          render :index
-          return
+          if !params[:charity].present?
+            if Rails.env.test?
+              charge = OpenStruct.new({
+                amount: params[:amount].to_i * 100,
+                paid: (params[:amount].to_i != 999),
+              })
+            else
+              charity = Charity.all.to_a.sample
+              charge = Omise::Charge.create({
+                amount: params[:amount].to_i * 100,
+                currency: "THB",
+                card: params[:omise_token],
+                description: "Donation to #{charity.name} [#{charity.id}]",
+              })
+              if charge.paid
+                charity.credit_amount(charge.amount)
+              end
+            end
+          end
         end
       else
         @token = retrieve_token(params[:omise_token])
