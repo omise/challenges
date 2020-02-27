@@ -50,7 +50,6 @@ Pick the one that most suites the position you wish to apply.
 * Frontend / React - [tamboon-react](https://github.com/omise/challenges/tree/challenge-react)
 * Mobile App / iOS and Android - [tamboon-mobile](https://github.com/omise/challenges/tree/challenge-mobile)
 * Design / UX - [design-challenge](https://github.com/omise/challenges/blob/challenge-design/design-challenge.pdf)
-* Data Engineer [code-challenge](https://github.com/omise/challenges/tree/challenge-data-engineer)
 
 ### Have fun and we look forward to your submission!
 
