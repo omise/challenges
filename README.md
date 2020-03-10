@@ -46,6 +46,7 @@ Pick the one that most suites the position you wish to apply.
 * Backend / Ruby on Rails - [tamboon-rails](https://github.com/omise/challenges/tree/challenge-rails)
 * Foundation / Ruby on Rails - [tamboon-rails](https://github.com/omise/challenges/tree/challenge-rails)
 * Backend / Go - [go-challenge](https://github.com/omise/challenges/tree/challenge-go)
+* Backend / Elixir - [elixir-challenge](https://github.com/boatkorachal/challenges/blob/challenge-elixir/README.md)
 * Devops / Kubernetes [challenge-devops](https://github.com/omise/challenges/tree/challenge-devops)
 * Frontend / React - [tamboon-react](https://github.com/omise/challenges/tree/challenge-react)
 * Mobile App / iOS and Android - [tamboon-mobile](https://github.com/omise/challenges/tree/challenge-mobile)
