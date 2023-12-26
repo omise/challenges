@@ -1,6 +1,6 @@
-# Omise Code Challenges
+# Opn Payments Code Challenges
 
-This repository houses the code challenges for Omise. These are
+This repository houses the code challenges for Opn Payments. These are
 small hands-on projects that are very relevant to the tasks you will be working on here.
 
 ### Ground Rules
@@ -14,7 +14,7 @@ small hands-on projects that are very relevant to the tasks you will be working 
 ### What to expect
 
 We do understand that our code challenges are time intensive and not always easy to
-execute. We do recognize and value the time and effort applicants put into their
+implement. We do recognize and value the time and effort applicants put into their
 submission. Our Code Challenges reflect some of the tasks and skills you'd need while
 working with us. We believe that these *take-home* challenges will give you a deeper
 understanding of our product, what you'd be working on in the future and what level of
